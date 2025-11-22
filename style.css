@@ -1,0 +1,322 @@
+
+* {
+    margin: 0;
+    font-family: "Lato", sans-serif;
+}
+
+
+
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    color: aliceblue;
+    position: relative;
+}
+
+.main-nav ul {
+    display: flex;
+}
+
+ul a {
+    display: inline-block;
+    color: aliceblue;
+    padding: 15px 23px;
+    cursor: pointer;
+}
+
+.search-container {
+    font-size: 18px;
+    padding: 15px 25px;
+}
+
+.search-container:hover {
+    background-color: red;
+}
+
+.main-nav ul a:hover {
+    background-color: rgba(235, 235, 241, 0.795);
+}
+
+.more {
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 150px;
+    background-color: rgba(235, 235, 241, 0.795);
+    border: 2px solid red;
+    flex-direction: column;
+}
+
+.more a {
+    display: block;
+    color: black;
+    padding: 10px;
+}
+
+.more a:hover {
+    background-color: rgb(134, 134, 136);
+}
+
+/* Show dropdown on hover */
+.show-more:hover .more {
+    display: flex;
+}
+
+/* ======================================= */
+
+.main-image img{
+    width: 100%;
+}
+
+/* ============================================ */
+
+.Band-paragraph{
+    margin-top: 100px;
+
+}
+.Band-paragraph h1{
+    color: black;
+    letter-spacing: 4px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-weight: 400;
+    font-size: 30px;
+    text-align: center;
+
+}
+
+.Band-paragraph .We-love-music{
+    color: rgba(139, 138, 138, 0.897);
+    font-style: italic;
+    padding: 25px;
+    text-align: center;
+}
+
+.Band-paragraph .We-have-created{
+    padding: 0 250px;
+    line-height: 21px;
+    padding-bottom: 50px;
+}
+
+
+.band-members{
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    padding: 0 250px;
+    padding-bottom: 100px;
+}
+
+.band-members img{
+    width: 60%;
+    border-radius: 5px;
+
+}
+
+.band-members p{
+    padding-bottom: 20px;
+    font-size: 15px;
+}
+
+/* ======================================================== */
+
+.tour-dates{
+    height: 800px;
+    background-color: black;
+
+}
+
+.tour-dates .h1{
+    text-align: center;
+    color: white;
+    padding: 60px 20px 0 0;
+    font-weight: 400;
+    font-size: 30px;
+    letter-spacing: 4px;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.tour-dates .month{
+    text-align: center;
+    color: rgb(122, 122, 121);
+    font-style: italic;
+    font-weight: 1000;
+    font-size: 15px;
+    margin-right: 20px;
+    padding: 20px 0;
+}
+
+.sold-out{
+    height: 120px;
+    background-color: white;
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.sold-out p{
+    float: left;
+    margin: -10px 10px;
+    color: rgb(122, 122, 121);
+    font-weight: 400;
+    
+}
+
+.sold-out span{
+    background-color: #f44336;
+    font-size: 15px;
+    padding: 3px 8px;
+    color: white;
+    margin-left: 15px;
+}
+.three{
+    border-radius: 50%;
+    background-color: black !important;
+    margin-left: 610px !important;
+    
+}
+.sold-out hr{
+    border: none;        /* Removes the default border */
+    height: 1px;         /* Adjust thickness */
+    background-color: #d6d6d6;  /* Your chosen color */
+}
+
+
+
+
+.image-content-below{
+    padding: 20px 15px; 
+    
+}
+
+.state{
+    width: 32%;
+    background-color: white;
+}
+
+.states-us{
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    width: 54.5%;
+    margin: 50px auto;
+}
+
+.states-us img{
+    width: 100%;
+}
+
+.state a{
+    display: inline-block;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.state-style{
+    padding-bottom: 10px;
+}
+
+.state-style{
+    padding-top: 15px;
+}
+/* ======================================================== */
+.contact{
+    background-color: #ffffff;
+    height: 360px;
+}
+
+.contact h1{
+    text-align: center;
+    padding: 90px 0 25px 0;
+}
+
+.contact .fan{
+    color: rgb(122, 122, 121);
+    font-style: italic;
+    text-align: center;
+}
+
+.contact-info{
+    font-size: 18px;
+    line-height: 25px;
+}
+.contact-info i{
+    padding-right: 20px;
+    font-size: 14px;
+}
+
+
+
+.form input{
+    border-radius: 0px;
+    border: 1px solid rgb(190, 190, 190);
+    height: 35px;
+    margin: 5px;
+}
+
+.message{
+    width: 97.5%;
+}
+
+.form a{
+    display: block;
+    background-color: black;
+    color: white;
+    padding: 8px;
+    float: right;
+    margin-right: 4px;
+    margin-top: 8px;
+    font-size: 18px;
+}
+
+.form-container{
+
+    display: flex;
+    justify-content: space-between;
+    width: 54.5%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 40px;
+
+}
+
+/* ======================================================== */
+.map{
+    margin: 100px 0 50px 0;
+}
+.map img{
+    width: 100%;
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    height: 150px;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.social-icons a {
+    color: #757575;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.social-icons a:hover {
+    color: black;
+}
+
+.powered {
+    color: #757575;
+    font-size: 14px;
+}
