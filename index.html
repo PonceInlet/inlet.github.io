@@ -1,175 +1,347 @@
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Band Template</title>
-    <link rel="stylesheet" href="stylev3.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>INLET — Electronic Press Kit</title>
+
+  <meta name="description" content="INLET — Indie Alt-Rock / Surf band from Port Orange, FL. EPK with bio, photos, music, gigs, contact." />
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg:#f6f9fb;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#ff7a59;
+      --accent2:#0ea5a4;
+      --max:1100px;
+    }
+    * { box-sizing:border-box; }
+    body {
+      font-family:Inter,system-ui,Arial,sans-serif;
+      margin:0;
+      background:var(--bg);
+      color:#0f172a;
+    }
+    a { color:var(--accent2); text-decoration:none; }
+    .container {
+      max-width:var(--max);
+      margin:28px auto;
+      padding:0 18px;
+    }
+
+    /* HERO SECTION */
+    header.hero {
+      display:flex;
+      gap:20px;
+      align-items:center;
+      padding:28px;
+      background:linear-gradient(180deg,#fff 0%,rgba(14,165,164,0.02)100%);
+      border-radius:12px;
+      animation:fadeInUp .6s forwards;
+    }
+    .hero-art {
+      width:170px;
+      height:170px;
+      object-fit:cover;
+      border-radius:12px;
+      box-shadow:0 12px 30px rgba(2,6,23,0.06);
+    }
+    h1 { margin:0; font-size:40px; letter-spacing:1px; }
+    .hero-info p { margin:8px 0 12px; color:var(--muted); }
+    .btn {
+      display:inline-block;
+      padding:10px 14px;
+      border-radius:10px;
+      background:var(--accent);
+      color:#fff;
+      font-weight:600;
+      margin-right:8px;
+    }
+    .btn.ghost {
+      background:transparent;
+      border:1px solid rgba(15,23,42,0.06);
+      color:var(--muted);
+    }
+
+    /* CARDS */
+    .card {
+      background:var(--card);
+      padding:18px;
+      border-radius:12px;
+      margin:18px 0;
+      box-shadow:0 8px 24px rgba(2,6,23,0.04);
+      opacity:0;
+      transform:translateY(10px);
+      animation:fadeInUp .6s forwards;
+    }
+    @keyframes fadeInUp { to { opacity:1; transform:none; } }
+    .card { will-change:opacity,transform; }
+
+    h2 { margin:0 0 12px; color:#0d5c63; }
+    .list-item {
+      padding:10px;
+      border-radius:8px;
+      transition:background .18s ease;
+    }
+    .list-item:hover {
+      background:linear-gradient(90deg,rgba(14,165,164,0.03),rgba(255,122,89,0.03));
+    }
+
+    /* GRID GALLERY — uniform sizing */
+    .grid {
+      display:grid;
+      gap:16px;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      margin-top:16px;
+    }
+    .grid a {
+      display:block;
+      overflow:hidden;
+      border-radius:12px;
+      position:relative;
+    }
+    .grid img {
+      width:100%;
+      aspect-ratio:4 / 3;
+      object-fit:cover;
+      display:block;
+      transition:transform .28s ease;
+    }
+    .grid img:hover {
+      transform:scale(1.05);
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.9);
+      display:none;
+      justify-content:center;
+      align-items:center;
+      z-index:9999;
+    }
+    .lightbox img {
+      max-width:90%;
+      max-height:90%;
+      border-radius:8px;
+      box-shadow:0 0 20px rgba(0,0,0,0.4);
+    }
+    .lightbox.active { display:flex; animation:fadeIn .3s ease; }
+    @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+
+    .lightbox-close,
+    .lightbox-prev,
+    .lightbox-next {
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      color:#fff;
+      font-size:48px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .lightbox-close {
+      top:34px;
+      right:40px;
+      font-size:42px;
+      transform:none;
+    }
+    .lightbox-prev { left:40px; }
+    .lightbox-next { right:40px; }
+
+    footer {
+      text-align:center;
+      padding:22px 0;
+      color:var(--muted);
+      font-size:13px;
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Main Navigation Bar with Dropdown and Search Icon -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <ul class="nav-list">
-                <li><a href="#" class="nav-item">HOME</a></li>
-                <li><a href="#" class="nav-item">BAND</a></li>
-                <li><a href="#" class="nav-item">TOUR</a></li>
-                <li><a href="#" class="nav-item">CONTACT</a></li>
-                <li><a href="#" class="nav-item">MORE <i class="fa-solid fa-chevron-down" style="font-size: 12;"></i></a></li>
-            </ul>
-        </div>
+<div class="container">
 
+  <!-- HERO -->
+  <header class="hero">
+    <img class="hero-art" src="assets/inlet-beach-air.png" alt="INLET band">
+    <div class="hero-info">
+      <h1>INLET</h1>
+      <p>Indie Alt-Rock / Surf from Port Orange, FL — three reverb-soaked guitars, tight rhythms, catchy melodies.</p>
 
-    
-        <div class="search-container">
-            <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        </div>
-    </nav>
-    <!-- <div class="more">
-        <ul>
-            <li><a href="">Marchandise</a></li>
-            <li><a href="">Extras</a></li>
-            <li><a href="">Media</a></li>
-        </ul>
-    </div> -->
+      <a class="btn" href="https://open.spotify.com/artist/17vaQuBeVZ0FozcBRqF9R3" target="_blank">Listen on Spotify</a>
+      <a class="btn ghost" href="#contact">Booking</a>
+    </div>
+  </header>
 
+  <!-- BIO -->
+  <section class="card">
+    <h2>Short Bio</h2>
+    <p>Inlet formed in Port Orange, Florida when five high-school friends turned surf days and skate parks into a band. They write sun-soaked, hook-driven songs about good times, love, and life — blending shimmering reverb and chorus-soaked guitars with tight rhythms, vocal layers, and singable melodies.</p>
 
-    <section class="main-image">
-        <img src="bandimages/la.jpg" alt="band image">
-    </section>
+    <h3>Band Members</h3>
+    <ul>
+      <li class="list-item"><strong>Matthew Gray</strong> — Guitar / Vocals</li>
+      <li class="list-item"><strong>John Gray</strong> — Guitar / Vocals</li>
+      <li class="list-item"><strong>Jake Tweed</strong> — Guitar</li>
+      <li class="list-item"><strong>Luke Hampton</strong> — Bass</li>
+      <li class="list-item"><strong>Aaron McKeown</strong> — Drums</li>
+    </ul>
 
-    <section class="Band-paragraph">
-        <h1>THE BAND</h1>
-        <p class="We-love-music">We love music</p>
-        <p class="We-have-created">
-            We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        </p>
-        <div class="band-members">
-            <div class="member">
-                <p>Name</p>
-                <img src="/bandimages/bandmember.jpg" alt="band member image">
-            </div>
+    <h3>Influences</h3>
+    <p class="list-item">The Strokes, Vampire Weekend, The Beatles, The Growlers, La Luz, The Smiths, Pixies, The Flaming Lips, Best Coast — plus jazz legends like Miles Davis & Coltrane and country greats like Hank Williams.</p>
+  </section>
 
-            <div class="member">
-                <p>Name</p>
-                <img src="/bandimages/bandmember.jpg" alt="band member image">
-            </div>
+  <!-- DISCOGRAPHY & LINKS -->
+  <section class="card">
+    <h2>Selected Singles</h2>
+    <ul>
+      <li class="list-item">Something's Going Down Tonight — 2023</li>
+      <li class="list-item">You're My Girl — 2024</li>
+      <li class="list-item">Give Me A Break — 2024</li>
+      <li class="list-item">You Won't See Me — 2025</li>
+      <li class="list-item">You're Not Owed That — Oct 2025</li>
+      <li class="list-item"><strong>Fine</strong> — Oct 2025 (underground hit)</li>
+    </ul>
 
-            <div class="member">
-                <p>Name</p>
-                <img src="/bandimages/bandmember.jpg" alt="band member image">
-            </div>
-        </div>
-    </section>
+    <h3>Listen</h3>
+    <iframe style="width:100%;height:140px;border-radius:12px;border:0" src="https://open.spotify.com/embed/artist/17vaQuBeVZ0FozcBRqF9R3"></iframe>
+  </section>
 
-    <section class="tour-dates">
-        <h1 class="h1">
-            TOUR DATES
-        </h1>
+  <!-- 🖼 FULL GALLERY WITH ALL 26 IMAGES -->
+  <section class="card">
+    <h2>Gallery</h2>
 
-        <p class="Remember-to-book">
-            Remember to book your tickets!
-        </p>
+    <div class="grid">
 
-        <div class="sold-out">
-            <div>
-                <p class="month">September<span>Sold out</span></p> 
-            </div>
-            <hr>
-            <div>
-                <p class="month">October<span>Sold out</span></p>
-            </div>
-            <hr>
-            <div>
-                <p class="month">November <span class="three">3</span></p>
-            </div>
-        </div>
+      <!-- LIVE FIRST -->
+      <a href="assets/inlet-john-matt-deland.png"><img src="assets/inlet-john-matt-deland.png"></a>
+      <a href="assets/inlet-john-wills.png"><img src="assets/inlet-john-wills.png"></a>
+      <a href="assets/inlet-matt-jake-deland.png"><img src="assets/inlet-matt-jake-deland.png"></a>
+      <a href="assets/inlet-jake-deland.png"><img src="assets/inlet-jake-deland.png"></a>
+      <a href="assets/inlet-luke-deland.png"><img src="assets/inlet-luke-deland.png"></a>
+      <a href="assets/inlet-luke-wills.png"><img src="assets/inlet-luke-wills.png"></a>
+      <a href="assets/inlet-matt-wills.png"><img src="assets/inlet-matt-wills.png"></a>
+      <a href="assets/inlet-jake-wills.png"><img src="assets/inlet-jake-wills.png"></a>
+      <a href="assets/inlet-ron-deland.png"><img src="assets/inlet-ron-deland.png"></a>
+      <a href="assets/inlet-ron-wills.png"><img src="assets/inlet-ron-wills.png"></a>
+      <a href="assets/inlet-drums-blur.png"><img src="assets/inlet-drums-blur.png"></a>
 
-        <div class="states-us">
-            <div class="state">
-                <img src="bandimages/newyork.jpg" alt="">
-                <div class="image-content-below">
-                    <b>New York</b>
-                    <p class="state-style" style="color: rgb(115, 115, 116);">Fri 27 Nov 2016</p>
-                    <br>
-                    <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                    <a href="#">Buy Tickets</a>
-                </div>
-            </div>
-        
-            <div class="state">
-                <img src="bandimages/paris.jpg" alt="">
-                <div class="image-content-below">
-                    <b>Paris</b>
-                    <p class="state-style" style="color: rgb(115, 115, 116);">Sat 28 Nov 2016</p>
-                    <br>
-                    <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                    <a href="#">Buy Tickets</a>
-                </div>
-            </div>
-        
-            <div class="state">
-                <img src="bandimages/sanfran.jpg" alt="">
-                <div class="image-content-below">
-                    <b >San Francisco</b>
-                    <p class="state-style" style="color: rgb(115, 115, 116);">Sun 29 Nov 2016</p>
-                    <br>
-                    <p>Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                    <a href="#">Buy Tickets</a>
-                </div>
-            </div>
-        </div>
+      <!-- B&W / PORTRAITS -->
+      <a href="assets/inlet-bw-home.png"><img src="assets/inlet-bw-home.png"></a>
+      <a href="assets/inlet-bw.png"><img src="assets/inlet-bw.png"></a>
+      <a href="assets/inlet-john-bw.png"><img src="assets/inlet-john-bw.png"></a>
+      <a href="assets/inlet-matt-bw.png"><img src="assets/inlet-matt-bw.png"></a>
+      <a href="assets/inlet-mattt-deland.png"><img src="assets/inlet-mattt-deland.png"></a>
+      <a href="assets/inlet-matt-jake-blur.png"><img src="assets/inlet-matt-jake-blur.png"></a>
 
-        <section class="contact">
-            <h1 style="letter-spacing: 4px; font-weight: 400; font-size: 28px;">
-                CONTACT
-            </h1>
+      <!-- BEACH -->
+      <a href="assets/inlet-beach.png"><img src="assets/inlet-beach.png"></a>
+      <a href="assets/inlet-beach-walking.png"><img src="assets/inlet-beach-walking.png"></a>
+      <a href="assets/inlet-beach-football.png"><img src="assets/inlet-beach-football.png"></a>
+      <a href="assets/inlet-beach-diag-serious.png"><img src="assets/inlet-beach-diag-serious.png"></a>
+      <a href="assets/inlet-lifeguard.png"><img src="assets/inlet-lifeguard.png"></a>
 
-            <p class="fan">
-                Fan? Drop a note!
-            </p>
+      <!-- MERCH -->
+      <a href="assets/inlet-back-of-shirt.png"><img src="assets/inlet-back-of-shirt.png"></a>
+      <a href="assets/inlet-front-of-shirt-jake.png"><img src="assets/inlet-front-of-shirt-jake.png"></a>
+      <a href="assets/inlet-bracelet.png"><img src="assets/inlet-bracelet.png"></a>
 
-            <div class="form-container">
-                <div class="contact-info">
-                    <p><i class="fa-solid fa-location-dot"></i>Chicago, US</p>
-                    <p><i class="fa-solid fa-phone"></i>Phone: +00 151515</p>
-                    <p><i class="fa-solid fa-envelope"></i>Email: mail@mail.com</p>
-                </div>
-                
-                <div class="form">
-                    <input type="text" placeholder="Name">
-                    <input type="email" placeholder="Email">
-                    <br>
-                    <input class="message" type="text" placeholder="Message">
-                    <br>
-                    <a href="">SEND</a>
-                </div>
+      <!-- COVER ART -->
+      <a href="assets/inlet-fine-cover.png"><img src="assets/inlet-fine-cover.png"></a>
 
-            </div>
+    </div>
+  </section>
 
-        </section>
+  <!-- PRESS -->
+  <section class="card">
+    <h2>Press & Achievements</h2>
+    <ul>
+      <li class="list-item">Underground hit: <em>Fine</em> — Oct 2025</li>
+      <li class="list-item">Consistent single releases with growing streaming presence</li>
+      <li class="list-item">Performed at Punk Rock Pizza — Mar 2, 2025</li>
+      <li class="list-item">Sold-out Cinematique Theater — Mar 8, 2025</li>
+      <li class="list-item">Uncle Lou's, Orlando — Apr 6, 2025</li>
+      <li class="list-item">Delandapalooza — Apr 12, 2025</li>
+      <li class="list-item">Will’s Pub (Mills 50) — May 9, 2025</li>
+    </ul>
+  </section>
 
-        <section class="map">
-            <img src="bandimages/map.jpg" alt="">
-        </section>
+  <!-- CONTACT -->
+  <section id="contact" class="card">
+    <h2>Contact & Booking</h2>
+    <p class="list-item"><strong>Booking:</strong> booking@inletband.example</p>
+    <p class="list-item"><strong>Management:</strong> info@inletband.example</p>
 
+    <h3>Socials</h3>
+    <p>
+      <a href="https://open.spotify.com/artist/17vaQuBeVZ0FozcBRqF9R3" target="_blank">Spotify</a> •
+      <a href="https://www.instagram.com/inlettheband" target="_blank">Instagram</a> •
+      <a href="https://www.youtube.com/channel/UCIq0cUss-PxETZh6uOgyZlQ" target="_blank">YouTube</a> •
+      <a href="https://music.apple.com/us/album/youre-not-owed-that-fine-single/1842620752" target="_blank">Apple Music</a> •
+      <a href="https://link.deezer.com/s/31G2hk3n6Er7YtIWcPccj" target="_blank">Deezer</a>
+    </p>
+  </section>
 
-        <footer class="footer">
-            <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-snapchat"></i></a>
-                <a href="#"><i class="fab fa-pinterest"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-            </div>
-            <p class="powered">Powered by Ehab Muhammad</p>
-        </footer>
-        
-    </section>
+  <footer>© INLET — All rights reserved</footer>
 
+</div>
 
+<!-- LIGHTBOX SCRIPT -->
+<script>
+const gallery = document.querySelectorAll('.grid a');
+const lightbox = document.createElement('div');
+lightbox.classList.add('lightbox');
+lightbox.innerHTML = `
+  <span class="lightbox-close">&times;</span>
+  <span class="lightbox-prev">&#10094;</span>
+  <img>
+  <span class="lightbox-next">&#10095;</span>
+`;
+document.body.appendChild(lightbox);
 
+const lbImg = lightbox.querySelector('img');
+let index = 0;
+
+function show(i){
+  index = i;
+  const link = gallery[index];
+  lbImg.src = link.href;
+  lightbox.classList.add('active');
+}
+
+gallery.forEach((a,i)=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    show(i);
+  });
+});
+
+document.querySelector('.lightbox-close').onclick = ()=>lightbox.classList.remove('active');
+
+document.querySelector('.lightbox-prev').onclick = ()=>{
+  index = (index - 1 + gallery.length) % gallery.length;
+  show(index);
+};
+document.querySelector('.lightbox-next').onclick = ()=>{
+  index = (index + 1) % gallery.length;
+  show(index);
+};
+
+lightbox.onclick = e=>{
+  if(e.target===lightbox) lightbox.classList.remove('active');
+};
+
+document.addEventListener('keydown',e=>{
+  if(!lightbox.classList.contains('active')) return;
+  if(e.key==="Escape") lightbox.classList.remove('active');
+  if(e.key==="ArrowRight") document.querySelector('.lightbox-next').click();
+  if(e.key==="ArrowLeft") document.querySelector('.lightbox-prev').click();
+});
+</script>
 
 </body>
 </html>
