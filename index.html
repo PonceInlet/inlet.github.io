@@ -159,31 +159,6 @@
       color:var(--muted);
       font-size:13px;
     }
-
-    /* 🎧 NEW SPOTIFY ICON LIST STYLES */
-    .track-list { padding: 0; list-style: none; }
-    .track-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 12px;
-      border-radius: 8px;
-      transition: background 0.2s ease;
-    }
-    .track-item:hover {
-      background: rgba(29,185,84,0.08);
-    }
-    .spotify-play {
-      width: 28px;
-      height: 28px;
-      flex-shrink: 0;
-    }
-    .spotify-play svg circle {
-      fill: #1DB954;
-    }
-    .spotify-play svg path {
-      fill: white;
-    }
   </style>
 </head>
 
@@ -220,84 +195,27 @@
     <p class="list-item">The Strokes, Vampire Weekend, The Beatles, The Growlers, La Luz, The Smiths, Pixies, The Flaming Lips, Best Coast — plus jazz legends like Miles Davis & Coltrane and country greats like Hank Williams.</p>
   </section>
 
-  <!-- DISCOGRAPHY -->
+  <!-- DISCOGRAPHY & LINKS -->
   <section class="card">
     <h2>Selected Singles</h2>
+<ul class="track-list-embeds">
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0fy6fzd8dhwOcp56qsOscx" width="100%" height="80" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2MOVUerAFjJVmJj9ZOzS4h" width="100%" height="80" frameborder="0"></iframe>
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/79VZfu6cNc6oA1HMMLpWVQ" width="100%" height="80" frameborder="0"></iframe>
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1mV2RbW204q2tNn5ZXJGoo" width="100%" height="80" frameborder="0"></iframe>
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2Yu33Opw1B3J3XUruXQFGb" width="100%" height="80" frameborder="0"></iframe>
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/4tQcdPCERWBncV4Y6MnstW" width="100%" height="80" frameborder="0"></iframe>
+</ul>
 
-    <!-- ⭐ NEW SPOTIFY ICON LIST BELOW ⭐ -->
-    <ul class="track-list">
-
-      <li class="track-item">
-        <span><strong>Fine</strong> — 2025</span>
-        <a href="https://open.spotify.com/track/0fy6fzd8dhwOcp56qsOscx?si=eb43f5e14025461c" target="_blank" class="spotify-play">
-          <svg viewBox="0 0 60 60">
-            <circle cx="30" cy="30" r="30"/>
-            <path d="M24 18 L42 30 L24 42 Z"/>
-          </svg>
-        </a>
-      </li>
-
-      <li class="track-item">
-        <span>Something's Going Down Tonight — 2023</span>
-        <a href="https://open.spotify.com/track/2MOVUerAFjJVmJj9ZOzS4h?si=e091bd208338412a" target="_blank" class="spotify-play">
-          <svg viewBox="0 0 60 60">
-            <circle cx="30" cy="30" r="30"/>
-            <path d="M24 18 L42 30 L24 42 Z"/>
-          </svg>
-        </a>
-      </li>
-
-      <li class="track-item">
-        <span>You Won't See Me — 2025</span>
-        <a href="https://open.spotify.com/track/79VZfu6cNc6oA1HMMLpWVQ?si=33dc0977cca74d3b" target="_blank" class="spotify-play">
-          <svg viewBox="0 0 60 60">
-            <circle cx="30" cy="30" r="30"/>
-            <path d="M24 18 L42 30 L24 42 Z"/>
-          </svg>
-        </a>
-      </li>
-
-      <li class="track-item">
-        <span>You're My Girl — 2024</span>
-        <a href="https://open.spotify.com/track/1mV2RbW204q2tNn5ZXJGoo?si=5dec60781eea486a" target="_blank" class="spotify-play">
-          <svg viewBox="0 0 60 60">
-            <circle cx="30" cy="30" r="30"/>
-            <path d="M24 18 L42 30 L24 42 Z"/>
-          </svg>
-        </a>
-      </li>
-
-      <li class="track-item">
-        <span>Give Me A Break — 2024</span>
-        <a href="https://open.spotify.com/track/2Yu33Opw1B3J3XUruXQFGb?si=560d7d47118a4f0c" target="_blank" class="spotify-play">
-          <svg viewBox="0 0 60 60">
-            <circle cx="30" cy="30" r="30"/>
-            <path d="M24 18 L42 30 L24 42 Z"/>
-          </svg>
-        </a>
-      </li>
-
-      <li class="track-item">
-        <span>You're Not Owed That — 2025</span>
-        <a href="https://open.spotify.com/track/4tQcdPCERWBncV4Y6MnstW?si=e76fb7bb13604483" target="_blank" class="spotify-play">
-          <svg viewBox="0 0 60 60">
-            <circle cx="30" cy="30" r="30"/>
-            <path d="M24 18 L42 30 L24 42 Z"/>
-          </svg>
-        </a>
-      </li>
-
-    </ul>
-
-    <!-- ORIGINAL EMBED KEPT BELOW -->
-    <h3>Listen</h3>
-    <iframe style="width:100%;height:140px;border-radius:12px;border:0" src="https://open.spotify.com/embed/artist/17vaQuBeVZ0FozcBRqF9R3"></iframe>
+<iframe style="width:100%;height:140px;border-radius:12px;border:0" src="https://open.spotify.com/embed/artist/17vaQuBeVZ0FozcBRqF9R3"></iframe>
   </section>
 
-  <!-- GALLERY (unchanged) -->
+  <!-- 🖼 FULL GALLERY WITH ALL 26 IMAGES -->
   <section class="card">
     <h2>Gallery</h2>
+
     <div class="grid">
+
       <!-- LIVE FIRST -->
       <a href="assets/inlet-john-matt-deland.png"><img src="assets/inlet-john-matt-deland.png"></a>
       <a href="assets/inlet-john-wills.png"><img src="assets/inlet-john-wills.png"></a>
@@ -311,7 +229,7 @@
       <a href="assets/inlet-ron-wills.png"><img src="assets/inlet-ron-wills.png"></a>
       <a href="assets/inlet-drums-blur.png"><img src="assets/inlet-drums-blur.png"></a>
 
-      <!-- B&W -->
+      <!-- B&W / PORTRAITS -->
       <a href="assets/inlet-bw-home.png"><img src="assets/inlet-bw-home.png"></a>
       <a href="assets/inlet-bw.png"><img src="assets/inlet-bw.png"></a>
       <a href="assets/inlet-john-bw.png"><img src="assets/inlet-john-bw.png"></a>
@@ -333,6 +251,7 @@
 
       <!-- COVER ART -->
       <a href="assets/inlet-fine-cover.png"><img src="assets/inlet-fine-cover.png"></a>
+
     </div>
   </section>
 
