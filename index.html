@@ -338,6 +338,87 @@
       box-shadow:0 10px 26px rgba(15,23,42,0.18);
     }
 
+    /* Custom audio players */
+    .audio-list{
+      margin-top:8px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+    .audio-track{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      padding:9px 11px;
+      border-radius:14px;
+      background:linear-gradient(135deg,rgba(14,165,164,0.08),rgba(255,122,89,0.05));
+      box-shadow:0 10px 24px rgba(15,23,42,0.12);
+    }
+    .audio-track.lead{
+      border:1px solid rgba(14,165,164,0.7);
+    }
+    .audio-play{
+      flex:0 0 36px;
+      height:36px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      background:var(--accent);
+      color:#f9fafb;
+      cursor:pointer;
+      box-shadow:0 10px 22px rgba(14,165,164,0.6);
+      transition:transform .12s ease, box-shadow .12s ease, background .12s ease, opacity .12s ease;
+    }
+    .audio-play svg{
+      width:16px;
+      height:16px;
+      fill:currentColor;
+      display:block;
+    }
+    .audio-track.playing .audio-play{
+      background:var(--accent2);
+      transform:translateY(-1px) scale(1.03);
+      box-shadow:0 12px 26px rgba(255,122,89,0.6);
+      opacity:0.98;
+    }
+    .audio-body{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .audio-title-row{
+      display:flex;
+      align-items:center;
+      gap:6px;
+      font-size:14px;
+      font-weight:600;
+    }
+    .audio-meta{
+      font-size:12px;
+      color:var(--muted);
+    }
+    .audio-bar audio{
+      width:100%;
+    }
+    .audio-spotify-dot{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:16px;
+      height:16px;
+      border-radius:999px;
+      background:#1DB954;
+      color:#020617;
+    }
+    .audio-spotify-dot svg{
+      width:10px;
+      height:10px;
+      fill:currentColor;
+      display:block;
+    }
+
     /* Quick links icon row */
     .quick-links{
       display:flex;
@@ -665,15 +746,173 @@
           <div>
             <h3 style="font-size:15px;margin-bottom:8px;">Singles</h3>
             <ul class="plain-list">
-              <li class="list-item">Something's Going Down Tonight — 2023</li>
-              <li class="list-item">You're My Girl — 2024</li>
-              <li class="list-item">Give Me A Break — 2024</li>
-              <li class="list-item">You Won't See Me — 2025</li>
-              <li class="list-item">You're Not Owed That — Oct 2025</li>
               <li class="list-item"><strong>Fine</strong> — Oct 2025 (underground hit)</li>
+              <li class="list-item">You're Not Owed That — Oct 2025</li>
+              <li class="list-item">You Won't See Me — 2025</li>
+              <li class="list-item">Give Me A Break — 2024</li>
+              <li class="list-item">You're My Girl — 2024</li>
+              <li class="list-item">Something's Going Down Tonight — 2023</li>
             </ul>
 
-            <h3 style="font-size:15px;margin:14px 0 6px;">Listen on Spotify</h3>
+            <!-- INLINE AUDIO PLAYERS -->
+            <h3 style="font-size:15px;margin:16px 0 6px;">Listen to Singles</h3>
+            <div class="audio-list">
+
+              <!-- Fine (Lead) -->
+              <div class="audio-track lead">
+                <button class="audio-play" type="button" aria-label="Play Fine">
+                  <!-- Play icon (triangle) -->
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </button>
+                <div class="audio-body">
+                  <div class="audio-title-row">
+                    <span class="track-title">Fine</span>
+                    <span class="audio-spotify-dot" title="Also on Spotify">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="audio-meta">Lead single · 2025</div>
+                  <div class="audio-bar">
+                    <audio preload="none">
+                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/fine-inlet.mp3" type="audio/mpeg">
+                    </audio>
+                  </div>
+                </div>
+              </div>
+
+              <!-- You're Not Owed That -->
+              <div class="audio-track">
+                <button class="audio-play" type="button" aria-label="Play You're Not Owed That">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </button>
+                <div class="audio-body">
+                  <div class="audio-title-row">
+                    <span class="track-title">You're Not Owed That</span>
+                    <span class="audio-spotify-dot" title="Also on Spotify">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="audio-meta">Single · 2025</div>
+                  <div class="audio-bar">
+                    <audio preload="none">
+                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/youre-not-owed-that-inlet.mp3" type="audio/mpeg">
+                    </audio>
+                  </div>
+                </div>
+              </div>
+
+              <!-- You Won't See Me -->
+              <div class="audio-track">
+                <button class="audio-play" type="button" aria-label="Play You Won't See Me">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </button>
+                <div class="audio-body">
+                  <div class="audio-title-row">
+                    <span class="track-title">You Won't See Me</span>
+                    <span class="audio-spotify-dot" title="Also on Spotify">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="audio-meta">Single · 2025</div>
+                  <div class="audio-bar">
+                    <audio preload="none">
+                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/you-wont-see-me-inlet.mp3" type="audio/mpeg">
+                    </audio>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Give Me A Break -->
+              <div class="audio-track">
+                <button class="audio-play" type="button" aria-label="Play Give Me A Break">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </button>
+                <div class="audio-body">
+                  <div class="audio-title-row">
+                    <span class="track-title">Give Me A Break</span>
+                    <span class="audio-spotify-dot" title="Also on Spotify">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="audio-meta">Single · 2024</div>
+                  <div class="audio-bar">
+                    <audio preload="none">
+                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/give-me-a-break-inlet.mp3" type="audio/mpeg">
+                    </audio>
+                  </div>
+                </div>
+              </div>
+
+              <!-- You're My Girl -->
+              <div class="audio-track">
+                <button class="audio-play" type="button" aria-label="Play You're My Girl">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </button>
+                <div class="audio-body">
+                  <div class="audio-title-row">
+                    <span class="track-title">You're My Girl</span>
+                    <span class="audio-spotify-dot" title="Also on Spotify">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="audio-meta">Single · 2024</div>
+                  <div class="audio-bar">
+                    <audio preload="none">
+                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/youre-my-girl.mp3" type="audio/mpeg">
+                    </audio>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Something's Going Down Tonight -->
+              <div class="audio-track">
+                <button class="audio-play" type="button" aria-label="Play Something's Going Down Tonight">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </button>
+                <div class="audio-body">
+                  <div class="audio-title-row">
+                    <span class="track-title">Something's Going Down Tonight</span>
+                    <span class="audio-spotify-dot" title="Also on Spotify">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="audio-meta">Single · 2023</div>
+                  <div class="audio-bar">
+                    <audio preload="none">
+                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/somethings-going-down-tonight-inlet.mp3" type="audio/mpeg">
+                    </audio>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- SPOTIFY EMBED -->
+            <h3 style="font-size:15px;margin:16px 0 6px;">Listen on Spotify</h3>
             <div class="media-embeds">
               <iframe src="https://open.spotify.com/embed/artist/17vaQuBeVZ0FozcBRqF9R3"
                       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
@@ -907,7 +1146,7 @@
   </footer>
 </div>
 
-<!-- LIGHTBOX + NAV + SCROLL REVEAL SCRIPT -->
+<!-- LIGHTBOX + NAV + SCROLL REVEAL + AUDIO SCRIPT -->
 <script>
   // Mobile nav toggle
   const navToggle = document.getElementById('navToggle');
@@ -1016,8 +1255,48 @@
   }, { threshold: 0.15 });
 
   revealEls.forEach(el => observer.observe(el));
+
+  // Audio players: one-at-a-time play + visual state
+  (function(){
+    const tracks = Array.from(document.querySelectorAll('.audio-track'));
+    const audios = tracks.map(t => t.querySelector('audio'));
+
+    function pauseAll(except){
+      audios.forEach(a => {
+        if (!a) return;
+        if (a !== except){
+          a.pause();
+          const parent = a.closest('.audio-track');
+          if (parent) parent.classList.remove('playing');
+        }
+      });
+    }
+
+    tracks.forEach(track => {
+      const audio = track.querySelector('audio');
+      const btn = track.querySelector('.audio-play');
+      if (!audio || !btn) return;
+
+      btn.addEventListener('click', () => {
+        if (audio.paused){
+          pauseAll(audio);
+          audio.play();
+          track.classList.add('playing');
+        } else {
+          audio.pause();
+          track.classList.remove('playing');
+        }
+      });
+
+      audio.addEventListener('ended', () => {
+        track.classList.remove('playing');
+      });
+      audio.addEventListener('pause', () => {
+        track.classList.remove('playing');
+      });
+    });
+  })();
 </script>
 
 </body>
 </html>
-
