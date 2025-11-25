@@ -406,3 +406,19 @@ footer{
   transform:translateY(0);
 }
 
+/* Vertical YouTube Shorts styling */
+.video-grid-vertical {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 22px;
+}
+
+.video-embed-vertical iframe {
+  width: 100%;
+  aspect-ratio: 9 / 16; /* Vertical shorts */
+  border: 0;
+  border-radius: 18px;
+  box-shadow: 0 14px 34px rgba(15,23,42,0.35);
+  object-fit: cover;
+}
+
