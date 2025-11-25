@@ -159,11 +159,16 @@ nav a:hover::after{width:100%;}
   padding:14px;
   box-shadow:var(--shadow-soft);
   display:flex;flex-direction:column;gap:10px;
-  width:100%;max-width:340px;margin-left:auto;
+  width:100%;
+  max-width:100%;
+  margin-left:0;
 }
 .hero-photo{
-  width:100%;border-radius:16px;aspect-ratio:4/3;
-  object-fit:cover;margin-bottom:8px;
+  width:100%;
+  border-radius:16px;
+  aspect-ratio:4/3;
+  object-fit:cover;
+  margin-bottom:8px;
 }
 .hero-caption{font-size:13px;color:var(--muted);}
 .hero-stats{
@@ -465,11 +470,17 @@ nav a:hover::after{width:100%;}
 .grid a:hover::after{opacity:1;transform:translateY(0);}
 
 /* ===========================
-   LIGHTBOX
+   LIGHTBOX (DIM + BLUR)
    =========================== */
 .lightbox-overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,0.92);
-  display:none;align-items:center;justify-content:center;z-index:100;
+  position:fixed;
+  inset:0;
+  background:rgba(15,23,42,0.6);
+  backdrop-filter:blur(10px);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:100;
 }
 .lightbox-overlay.open{display:flex;}
 .lightbox-content{
