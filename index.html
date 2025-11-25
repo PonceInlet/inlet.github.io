@@ -24,192 +24,105 @@
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
-    html{
-      scroll-behavior:smooth;
-    }
+    html{scroll-behavior:smooth;}
     body{
       font-family:Inter,system-ui,Arial,sans-serif;
       background:var(--bg);
       color:var(--fg);
       line-height:1.6;
     }
-    a{
-      color:var(--accent);
-      text-decoration:none;
-    }
+    a{color:var(--accent);text-decoration:none;}
 
     /* Sticky Header */
     .site-header{
-      position:fixed;
-      top:0;
-      left:0;
-      right:0;
-      z-index:50;
+      position:fixed;top:0;left:0;right:0;z-index:50;
       backdrop-filter:blur(14px);
       background:rgba(249,250,251,0.9);
       border-bottom:1px solid rgba(148,163,184,0.18);
       transition:box-shadow .2s ease,background .2s ease,transform .2s ease;
     }
     .site-header-inner{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:10px 18px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
+      max-width:var(--max);margin:0 auto;padding:10px 18px;
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
     }
     .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      font-weight:700;
-      letter-spacing:.16em;
-      text-transform:uppercase;
-      font-size:14px;
+      display:flex;align-items:center;gap:10px;
+      font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:14px;
     }
     .brand-mark{
-      width:24px;
-      height:24px;
-      border-radius:999px;
+      width:24px;height:24px;border-radius:999px;
       background:linear-gradient(135deg,var(--accent),var(--accent2));
     }
-
-    nav ul{
-      list-style:none;
-      display:flex;
-      gap:18px;
-      font-size:14px;
-    }
+    nav ul{list-style:none;display:flex;gap:18px;font-size:14px;}
     nav a{
-      color:var(--muted);
-      font-weight:500;
-      position:relative;
-      padding-bottom:2px;
+      color:var(--muted);font-weight:500;position:relative;padding-bottom:2px;
     }
     nav a::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-2px;
-      width:0;
-      height:2px;
-      border-radius:999px;
-      background:var(--accent);
-      transition:width .18s ease;
+      content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;
+      border-radius:999px;background:var(--accent);transition:width .18s ease;
     }
-    nav a:hover::after{
-      width:100%;
-    }
+    nav a:hover::after{width:100%;}
 
     /* Mobile nav */
     .nav-toggle{
-      display:none;
-      background:transparent;
-      border:none;
-      font-size:22px;
-      cursor:pointer;
+      display:none;background:transparent;border:none;font-size:22px;cursor:pointer;
     }
-    .nav-toggle span{
-      display:block;
-    }
-    .nav-links{
-      display:flex;
-    }
+    .nav-links{display:flex;}
     @media(max-width:780px){
       .nav-toggle{display:block;}
       .nav-links{
-        position:absolute;
-        top:100%;
-        right:0;
-        left:0;
+        position:absolute;top:100%;right:0;left:0;
         background:rgba(249,250,251,0.98);
         border-bottom:1px solid rgba(148,163,184,0.2);
-        flex-direction:column;
-        gap:0;
-        max-height:0;
-        overflow:hidden;
+        flex-direction:column;gap:0;max-height:0;overflow:hidden;
         transition:max-height .25s ease;
       }
-      .nav-links.open{
-        max-height:260px;
-      }
-      nav ul{
-        flex-direction:column;
-        padding:8px 18px 10px;
-        gap:8px;
-      }
+      .nav-links.open{max-height:260px;}
+      nav ul{flex-direction:column;padding:8px 18px 10px;gap:8px;}
     }
-
     .site-header.scrolled{
       box-shadow:0 14px 30px rgba(15,23,42,0.12);
       background:rgba(249,250,251,0.94);
     }
 
     /* Layout */
-    .page{
-      padding-top:70px; /* space for sticky header */
-    }
-    .container{
-      max-width:var(--max);
-      margin:0 auto;
-      padding:0 18px;
-    }
+    .page{padding-top:70px;}
+    .container{max-width:var(--max);margin:0 auto;padding:0 18px;}
 
-    /* Hero */
-    .hero{
-      padding:70px 0 40px;
-      display:flex;
+    /* Hero (aligned like two-col) */
+    .hero{padding:70px 0 40px;}
+    .hero-card-outer{
+      background:var(--bg-elevated);
+      border-radius:var(--radius-lg);
+      padding:24px 22px;
+      box-shadow:var(--shadow-soft);
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.4fr 1fr;
+      gap:24px;
       align-items:center;
-      justify-content:space-between;
-      gap:36px;
     }
-    .hero-main{
-      flex:1.4;
+    @media(max-width:900px){
+      .hero-grid{grid-template-columns:1fr;}
     }
+    .hero-main{flex:1.4;}
     .hero-kicker{
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      font-size:11px;
-      color:var(--accent);
-      font-weight:600;
-      margin-bottom:10px;
+      text-transform:uppercase;letter-spacing:.18em;
+      font-size:11px;color:var(--accent);font-weight:600;margin-bottom:10px;
     }
-    .hero h1{
-      font-size:44px;
-      line-height:1.05;
-      margin-bottom:10px;
-    }
+    .hero h1{font-size:44px;line-height:1.05;margin-bottom:10px;}
     .hero-sub{
-      font-size:18px;
-      color:var(--muted);
-      max-width:520px;
-      margin-bottom:16px;
+      font-size:18px;color:var(--muted);
+      max-width:520px;margin-bottom:16px;
     }
-    .hero-meta{
-      font-size:13px;
-      color:var(--muted);
-      margin-bottom:18px;
-    }
-    .btn-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-bottom:6px;
-    }
+    .hero-meta{font-size:13px;color:var(--muted);margin-bottom:18px;}
+    .btn-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:6px;}
     .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:10px 16px;
-      border-radius:999px;
-      background:var(--accent);
-      color:#fff;
-      font-size:14px;
-      font-weight:600;
-      border:none;
-      cursor:pointer;
-      text-decoration:none;
+      display:inline-flex;align-items:center;gap:8px;
+      padding:10px 16px;border-radius:999px;
+      background:var(--accent);color:#fff;font-size:14px;font-weight:600;
+      border:none;cursor:pointer;text-decoration:none;
       box-shadow:0 14px 30px rgba(14,165,164,0.4);
       transition:transform .16s ease,box-shadow .16s ease,opacity .16s ease;
     }
@@ -219,110 +132,63 @@
       opacity:0.95;
     }
     .btn-ghost{
-      background:transparent;
-      color:var(--fg);
-      box-shadow:none;
-      border:1px solid rgba(148,163,184,0.4);
+      background:transparent;color:var(--fg);
+      box-shadow:none;border:1px solid rgba(148,163,184,0.4);
     }
-    .btn-ghost:hover{
-      box-shadow:0 10px 26px rgba(15,23,42,0.08);
-    }
+    .btn-ghost:hover{box-shadow:0 10px 26px rgba(15,23,42,0.08);}
 
-    .hero-side{
-      flex:1;
-      display:flex;
-      justify-content:flex-end;
-    }
+    .hero-side{flex:1;display:flex;justify-content:flex-start;}
     .hero-card{
       background:var(--bg-elevated);
       border-radius:var(--radius-lg);
-      padding:18px;
+      padding:14px;
       box-shadow:var(--shadow-soft);
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      max-width:320px;
+      display:flex;flex-direction:column;gap:10px;
+      width:100%;max-width:340px;margin-left:auto;
     }
     .hero-photo{
-      width:100%;
-      border-radius:16px;
-      aspect-ratio:4/3;
-      object-fit:cover;
-      margin-bottom:8px;
+      width:100%;border-radius:16px;aspect-ratio:4/3;
+      object-fit:cover;margin-bottom:8px;
     }
-    .hero-caption{
-      font-size:13px;
-      color:var(--muted);
-    }
-
+    .hero-caption{font-size:13px;color:var(--muted);}
     @media(max-width:880px){
-      .hero{
-        flex-direction:column-reverse;
-        align-items:flex-start;
-      }
-      .hero-side{
-        width:100%;
-        justify-content:center;
-      }
-      .hero-card{
-        max-width:100%;
-      }
+      .hero{padding-top:40px;}
+      .hero-card{max-width:100%;margin-left:0;}
     }
-
     @media(max-width:600px){
-      .hero{
-        padding-top:40px;
-      }
-      .hero h1{
-        font-size:34px;
-      }
-      .hero-sub{
-        font-size:16px;
-      }
+      .hero h1{font-size:34px;}
+      .hero-sub{font-size:16px;}
     }
 
     /* Sections / cards */
-    .section{
-      padding:34px 0;
-    }
+    .section{padding:34px 0;}
     .section-header{
-      display:flex;
-      justify-content:space-between;
-      align-items:flex-end;
-      gap:12px;
-      margin-bottom:16px;
+      display:flex;justify-content:space-between;
+      align-items:flex-end;gap:12px;margin-bottom:16px;
     }
-    .section-title{
-      font-size:26px;
-    }
+    .section-title{font-size:26px;}
     .section-kicker{
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      font-size:11px;
-      color:var(--muted);
+      text-transform:uppercase;letter-spacing:.18em;
+      font-size:11px;color:var(--muted);
     }
-
     .card{
       background:var(--bg-elevated);
       border-radius:var(--radius-lg);
       padding:22px 20px;
       box-shadow:var(--shadow-soft);
     }
-
     .two-col{
       display:grid;
       grid-template-columns:1.4fr 1fr;
       gap:22px;
     }
     @media(max-width:900px){
-      .two-col{
-        grid-template-columns:1fr;
-      }
+      .two-col{grid-template-columns:1fr;}
     }
-
+    .plain-list{list-style:none;padding:0;margin:0;font-size:14px;}
+    .plain-list li+li{margin-top:6px;}
     .list-item{
-      padding:8px 10px;
-      border-radius:8px;
+      padding:8px 10px;border-radius:8px;
       transition:background .16s ease;
     }
     .list-item:hover{
@@ -331,123 +197,75 @@
 
     /* Music / embeds */
     .media-embeds iframe{
-      width:100%;
-      height:150px;
-      border-radius:14px;
-      border:0;
+      width:100%;height:150px;border-radius:14px;border:0;
       box-shadow:0 10px 26px rgba(15,23,42,0.18);
     }
 
-    /* Custom audio players */
-    .audio-list{
-      margin-top:8px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
+    /* Custom audio track list */
+    .audio-player{margin-top:10px;}
+    .tracks{
+      display:flex;flex-direction:column;gap:6px;margin-bottom:10px;
     }
-    .audio-track{
-      display:flex;
+    .track{
+      display:grid;
+      grid-template-columns:auto 1fr auto;
       align-items:center;
       gap:10px;
-      padding:9px 11px;
-      border-radius:14px;
-      background:linear-gradient(135deg,rgba(14,165,164,0.08),rgba(255,122,89,0.05));
-      box-shadow:0 10px 24px rgba(15,23,42,0.12);
-    }
-    .audio-track.lead{
-      border:1px solid rgba(14,165,164,0.7);
-    }
-    .audio-play{
-      flex:0 0 36px;
-      height:36px;
-      border-radius:999px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      background:var(--accent);
-      color:#f9fafb;
+      padding:8px 10px;
+      border-radius:10px;
       cursor:pointer;
-      box-shadow:0 10px 22px rgba(14,165,164,0.6);
-      transition:transform .12s ease, box-shadow .12s ease, background .12s ease, opacity .12s ease;
+      transition:background .16s ease, transform .1s ease;
     }
-    .audio-play svg{
-      width:16px;
-      height:16px;
-      fill:currentColor;
-      display:block;
+    .track:hover{
+      background:rgba(15,23,42,0.03);
+      transform:translateY(-1px);
     }
-    .audio-track.playing .audio-play{
-      background:var(--accent2);
-      transform:translateY(-1px) scale(1.03);
-      box-shadow:0 12px 26px rgba(255,122,89,0.6);
-      opacity:0.98;
+    .track.playing{background:rgba(14,165,164,0.08);}
+    .track-play{
+      width:30px;height:30px;border-radius:999px;
+      border:none;display:inline-flex;align-items:center;justify-content:center;
+      background:#020617;color:#e5e7eb;cursor:pointer;font-size:14px;padding:0;
     }
-    .audio-body{
-      flex:1;
-      display:flex;
-      flex-direction:column;
-      gap:4px;
+    .track.playing .track-play{
+      background:var(--accent);color:#020617;
     }
-    .audio-title-row{
-      display:flex;
-      align-items:center;
-      gap:6px;
-      font-size:14px;
-      font-weight:600;
+    .track-text{display:flex;flex-direction:column;gap:2px;}
+    .track-title{font-size:14px;font-weight:600;}
+    .track-meta{font-size:12px;color:var(--muted);}
+    .track-time{font-size:12px;color:var(--muted);min-width:44px;text-align:right;}
+
+    .track-progress-wrap{margin-top:6px;}
+    #trackProgress{
+      width:100%;-webkit-appearance:none;height:4px;
+      border-radius:999px;background:#e5e7eb;outline:none;cursor:pointer;
     }
-    .audio-meta{
-      font-size:12px;
-      color:var(--muted);
+    #trackProgress::-webkit-slider-thumb{
+      -webkit-appearance:none;width:12px;height:12px;border-radius:50%;
+      background:var(--accent);box-shadow:0 0 0 4px rgba(14,165,164,0.2);border:none;
     }
-    .audio-bar audio{
-      width:100%;
+    #trackProgress::-moz-range-thumb{
+      width:12px;height:12px;border-radius:50%;
+      background:var(--accent);border:none;
     }
-    .audio-spotify-dot{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      width:16px;
-      height:16px;
-      border-radius:999px;
-      background:#1DB954;
-      color:#020617;
-    }
-    .audio-spotify-dot svg{
-      width:10px;
-      height:10px;
-      fill:currentColor;
-      display:block;
+    .track-progress-times{
+      display:flex;justify-content:space-between;
+      margin-top:4px;font-size:11px;color:var(--muted);
     }
 
     /* Quick links icon row */
-    .quick-links{
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-    }
+    .quick-links{display:flex;flex-direction:column;gap:10px;}
     .quick-links-icons{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
+      display:flex;flex-wrap:wrap;gap:10px;align-items:center;
     }
     .quick-icon{
-      width:34px;
-      height:34px;
-      border-radius:999px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      background:#020617;
-      color:#e5e7eb;
+      width:34px;height:34px;border-radius:999px;
+      display:inline-flex;align-items:center;justify-content:center;
+      background:#020617;color:#e5e7eb;
       box-shadow:0 10px 22px rgba(15,23,42,0.45);
       transition:transform .16s ease, box-shadow .16s ease, opacity .16s ease;
     }
     .quick-icon svg{
-      width:18px;
-      height:18px;
-      fill:currentColor;
-      display:block;
+      width:18px;height:18px;fill:currentColor;display:block;
     }
     .quick-icon:hover{
       transform:translateY(-1px);
@@ -455,131 +273,69 @@
       box-shadow:0 14px 30px rgba(15,23,42,0.6);
     }
     .quick-icon.spotify{
-      background:#1DB954;
-      color:#020617;
+      background:#1DB954;color:#020617;
       box-shadow:0 14px 30px rgba(29,185,84,0.55);
     }
     .quick-icon.instagram{
       background:radial-gradient(circle at 30% 30%, #fdf497 0, #fd5949 45%, #d6249f 70%, #285AEB 100%);
       color:#f9fafb;
     }
-    .quick-icon.youtube{
-      background:#ff0000;
-      color:#f9fafb;
-    }
-    .quick-icon.apple{
-      background:#000000;
-      color:#f9fafb;
-    }
-    .quick-icon.deezer{
-      background:#111827;
-      color:#f9fafb;
-    }
+    .quick-icon.youtube{background:#ff0000;color:#f9fafb;}
+    .quick-icon.apple{background:#000000;color:#f9fafb;}
+    .quick-icon.deezer{background:#111827;color:#f9fafb;}
 
     /* Gallery */
     .gallery-hero img{
-      width:100%;
-      border-radius:18px;
-      aspect-ratio:16/9;
-      object-fit:cover;
-      display:block;
-      margin-bottom:16px;
+      width:100%;border-radius:18px;aspect-ratio:16/9;
+      object-fit:cover;display:block;margin-bottom:16px;
       box-shadow:var(--shadow-soft);
     }
-
     .grid{
-      display:grid;
-      grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-      gap:14px;
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;
     }
     .grid a{
-      display:block;
-      position:relative;
-      overflow:hidden;
-      border-radius:14px;
-      cursor:pointer;
-      background:#020617;
+      display:block;position:relative;overflow:hidden;
+      border-radius:14px;cursor:pointer;background:#020617;
     }
     .grid img{
-      width:100%;
-      aspect-ratio:4/3;
-      object-fit:cover;
-      display:block;
+      width:100%;aspect-ratio:4/3;object-fit:cover;display:block;
       transition:transform .3s ease,opacity .3s ease;
     }
     .grid a::after{
       content:"View";
-      position:absolute;
-      bottom:10px;
-      right:12px;
-      padding:4px 10px;
-      border-radius:999px;
-      background:rgba(15,23,42,0.82);
-      color:#e5e7eb;
-      font-size:11px;
-      opacity:0;
-      transform:translateY(4px);
-      transition:.2s ease;
+      position:absolute;bottom:10px;right:12px;
+      padding:4px 10px;border-radius:999px;
+      background:rgba(15,23,42,0.82);color:#e5e7eb;
+      font-size:11px;opacity:0;transform:translateY(4px);transition:.2s ease;
     }
-    .grid a:hover img{
-      transform:scale(1.04);
-      opacity:0.95;
-    }
-    .grid a:hover::after{
-      opacity:1;
-      transform:translateY(0);
-    }
+    .grid a:hover img{transform:scale(1.04);opacity:0.95;}
+    .grid a:hover::after{opacity:1;transform:translateY(0);}
 
     /* Lightbox */
     .lightbox-overlay{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,0.92);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      z-index:100;
+      position:fixed;inset:0;background:rgba(0,0,0,0.92);
+      display:none;align-items:center;justify-content:center;z-index:100;
     }
-    .lightbox-overlay.open{
-      display:flex;
-    }
+    .lightbox-overlay.open{display:flex;}
     .lightbox-content{
-      max-width:90vw;
-      max-height:90vh;
-      position:relative;
-      text-align:center;
-      color:#f9fafb;
+      max-width:90vw;max-height:90vh;position:relative;
+      text-align:center;color:#f9fafb;
     }
     .lightbox-image{
-      max-width:100%;
-      max-height:80vh;
-      border-radius:16px;
+      max-width:100%;max-height:80vh;border-radius:16px;
       box-shadow:0 24px 60px rgba(0,0,0,0.8);
     }
-    .lightbox-caption{
-      margin-top:10px;
-      font-size:13px;
-      color:#e5e7eb;
-    }
+    .lightbox-caption{margin-top:10px;font-size:13px;color:#e5e7eb;}
     .lightbox-close,
     .lightbox-prev,
     .lightbox-next{
-      position:absolute;
-      top:50%;
-      transform:translateY(-50%);
-      background:rgba(15,23,42,0.82);
-      border:none;
-      color:#f9fafb;
-      font-size:20px;
-      padding:10px 14px;
-      border-radius:999px;
-      cursor:pointer;
+      position:absolute;top:50%;transform:translateY(-50%);
+      background:rgba(15,23,42,0.82);border:none;
+      color:#f9fafb;font-size:20px;
+      padding:10px 14px;border-radius:999px;cursor:pointer;
     }
     .lightbox-close{
-      top:16px;
-      right:16px;
-      transform:none;
-      font-size:22px;
+      top:16px;right:16px;transform:none;font-size:22px;
     }
     .lightbox-prev{left:-44px;}
     .lightbox-next{right:-44px;}
@@ -588,27 +344,14 @@
       .lightbox-next{right:8px;}
     }
 
-    /* Press & tech lists */
-    .plain-list{
-      list-style:none;
-      padding:0;
-      margin:0;
-      font-size:14px;
-    }
-    .plain-list li+li{
-      margin-top:6px;
-    }
-
-    /* Contact */
+    /* Contact layout */
     .contact-grid{
       display:grid;
       grid-template-columns:1.1fr 1fr;
       gap:20px;
     }
     @media(max-width:780px){
-      .contact-grid{
-        grid-template-columns:1fr;
-      }
+      .contact-grid{grid-template-columns:1fr;}
     }
 
     footer{
@@ -661,31 +404,35 @@
 
     <!-- HERO -->
     <section class="hero reveal">
-      <div class="hero-main">
-        <div class="hero-kicker">Indie alt-rock / surf · Port Orange, FL</div>
-        <h1>Hook-heavy coastal indie with three shimmering guitars.</h1>
-        <p class="hero-sub">
-          INLET is five high-school friends turning surf days and late nights into sun-soaked,
-          melodic indie rock — reverb-washed guitars, tight rhythms, and big sing-along choruses.
-        </p>
-        <p class="hero-meta">
-          For promoters, venues & press: streaming links, photos, live history and technical info in one place.
-        </p>
-        <div class="btn-row">
-          <a class="btn" href="https://open.spotify.com/artist/17vaQuBeVZ0FozcBRqF9R3" target="_blank">Listen on Spotify</a>
-          <a class="btn btn-ghost" href="#contact">Booking & Contact</a>
+      <div class="hero-card-outer">
+        <div class="hero-grid">
+          <div class="hero-main">
+            <div class="hero-kicker">Indie alt-rock / surf · Port Orange, FL</div>
+            <h1>Hook-heavy coastal indie with three shimmering guitars.</h1>
+            <p class="hero-sub">
+              INLET is five high-school friends turning surf days and late nights into sun-soaked,
+              melodic indie rock — reverb-washed guitars, tight rhythms, and big sing-along choruses.
+            </p>
+            <p class="hero-meta">
+              For promoters, venues & press: streaming links, photos, live history and technical info in one place.
+            </p>
+            <div class="btn-row">
+              <a class="btn" href="https://open.spotify.com/artist/17vaQuBeVZ0FozcBRqF9R3" target="_blank">Listen on Spotify</a>
+              <a class="btn btn-ghost" href="#contact">Booking & Contact</a>
+            </div>
+          </div>
+
+          <aside class="hero-side">
+            <div class="hero-card">
+              <img class="hero-photo" src="assets/inlet-beach-air.png" alt="INLET band on the beach">
+              <div class="hero-caption">
+                INLET — Port Orange, FL.<br>
+                For fans of The Strokes, Vampire Weekend, The Growlers, La Luz.
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
-
-      <aside class="hero-side">
-        <div class="hero-card">
-          <img class="hero-photo" src="assets/inlet-beach-air.png" alt="INLET band on the beach">
-          <div class="hero-caption">
-            INLET — Port Orange, FL.<br>
-            For fans of The Strokes, Vampire Weekend, The Growlers, La Luz.
-          </div>
-        </div>
-      </aside>
     </section>
 
     <!-- ABOUT -->
@@ -744,175 +491,87 @@
       <div class="card">
         <div class="two-col">
           <div>
-            <h3 style="font-size:15px;margin-bottom:8px;">Singles</h3>
-            <ul class="plain-list">
-              <li class="list-item"><strong>Fine</strong> — Oct 2025 (underground hit)</li>
-              <li class="list-item">You're Not Owed That — Oct 2025</li>
-              <li class="list-item">You Won't See Me — 2025</li>
-              <li class="list-item">Give Me A Break — 2024</li>
-              <li class="list-item">You're My Girl — 2024</li>
-              <li class="list-item">Something's Going Down Tonight — 2023</li>
-            </ul>
+            <h3 style="font-size:15px;margin-bottom:8px;">Listen to Singles</h3>
 
-            <!-- INLINE AUDIO PLAYERS -->
-            <h3 style="font-size:15px;margin:16px 0 6px;">Listen to Singles</h3>
-            <div class="audio-list">
+            <div class="audio-player">
+              <div class="tracks" id="trackList">
+                <!-- 1. Fine -->
+                <div class="track"
+                     data-src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/fine-inlet.mp3">
+                  <button class="track-play" type="button" aria-label="Play or pause Fine">▶</button>
+                  <div class="track-text">
+                    <div class="track-title">Fine</div>
+                    <div class="track-meta">Single · Oct 2025 (underground hit)</div>
+                  </div>
+                  <div class="track-time" data-time>0:00</div>
+                </div>
 
-              <!-- Fine (Lead) -->
-              <div class="audio-track lead">
-                <button class="audio-play" type="button" aria-label="Play Fine">
-                  <!-- Play icon (triangle) -->
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8 5v14l11-7z"></path>
-                  </svg>
-                </button>
-                <div class="audio-body">
-                  <div class="audio-title-row">
-                    <span class="track-title">Fine</span>
-                    <span class="audio-spotify-dot" title="Also on Spotify">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
-                      </svg>
-                    </span>
+                <!-- 2. You're Not Owed That -->
+                <div class="track"
+                     data-src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/youre-not-owed-that-inlet.mp3">
+                  <button class="track-play" type="button" aria-label="Play or pause You're Not Owed That">▶</button>
+                  <div class="track-text">
+                    <div class="track-title">You're Not Owed That</div>
+                    <div class="track-meta">Single · Oct 2025</div>
                   </div>
-                  <div class="audio-meta">Lead single · 2025</div>
-                  <div class="audio-bar">
-                    <audio preload="none">
-                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/fine-inlet.mp3" type="audio/mpeg">
-                    </audio>
+                  <div class="track-time" data-time>0:00</div>
+                </div>
+
+                <!-- 3. You Won't See Me -->
+                <div class="track"
+                     data-src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/you-wont-see-me-inlet.mp3">
+                  <button class="track-play" type="button" aria-label="Play or pause You Won't See Me">▶</button>
+                  <div class="track-text">
+                    <div class="track-title">You Won't See Me</div>
+                    <div class="track-meta">Single · 2025</div>
                   </div>
+                  <div class="track-time" data-time>0:00</div>
+                </div>
+
+                <!-- 4. You're My Girl -->
+                <div class="track"
+                     data-src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/youre-my-girl.mp3">
+                  <button class="track-play" type="button" aria-label="Play or pause You're My Girl">▶</button>
+                  <div class="track-text">
+                    <div class="track-title">You're My Girl</div>
+                    <div class="track-meta">Single · 2024</div>
+                  </div>
+                  <div class="track-time" data-time>0:00</div>
+                </div>
+
+                <!-- 5. Give Me A Break -->
+                <div class="track"
+                     data-src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/give-me-a-break-inlet.mp3">
+                  <button class="track-play" type="button" aria-label="Play or pause Give Me A Break">▶</button>
+                  <div class="track-text">
+                    <div class="track-title">Give Me A Break</div>
+                    <div class="track-meta">Single · 2024</div>
+                  </div>
+                  <div class="track-time" data-time>0:00</div>
+                </div>
+
+                <!-- 6. Something's Going Down Tonight -->
+                <div class="track"
+                     data-src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/somethings-going-down-tonight-inlet.mp3">
+                  <button class="track-play" type="button" aria-label="Play or pause Something's Going Down Tonight">▶</button>
+                  <div class="track-text">
+                    <div class="track-title">Something's Going Down Tonight</div>
+                    <div class="track-meta">Single · 2023</div>
+                  </div>
+                  <div class="track-time" data-time>0:00</div>
                 </div>
               </div>
 
-              <!-- You're Not Owed That -->
-              <div class="audio-track">
-                <button class="audio-play" type="button" aria-label="Play You're Not Owed That">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8 5v14l11-7z"></path>
-                  </svg>
-                </button>
-                <div class="audio-body">
-                  <div class="audio-title-row">
-                    <span class="track-title">You're Not Owed That</span>
-                    <span class="audio-spotify-dot" title="Also on Spotify">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
-                      </svg>
-                    </span>
-                  </div>
-                  <div class="audio-meta">Single · 2025</div>
-                  <div class="audio-bar">
-                    <audio preload="none">
-                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/youre-not-owed-that-inlet.mp3" type="audio/mpeg">
-                    </audio>
-                  </div>
+              <div class="track-progress-wrap">
+                <input type="range" id="trackProgress" min="0" max="100" value="0" />
+                <div class="track-progress-times">
+                  <span id="currentTime">0:00</span>
+                  <span id="duration">0:00</span>
                 </div>
               </div>
-
-              <!-- You Won't See Me -->
-              <div class="audio-track">
-                <button class="audio-play" type="button" aria-label="Play You Won't See Me">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8 5v14l11-7z"></path>
-                  </svg>
-                </button>
-                <div class="audio-body">
-                  <div class="audio-title-row">
-                    <span class="track-title">You Won't See Me</span>
-                    <span class="audio-spotify-dot" title="Also on Spotify">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
-                      </svg>
-                    </span>
-                  </div>
-                  <div class="audio-meta">Single · 2025</div>
-                  <div class="audio-bar">
-                    <audio preload="none">
-                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/you-wont-see-me-inlet.mp3" type="audio/mpeg">
-                    </audio>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Give Me A Break -->
-              <div class="audio-track">
-                <button class="audio-play" type="button" aria-label="Play Give Me A Break">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8 5v14l11-7z"></path>
-                  </svg>
-                </button>
-                <div class="audio-body">
-                  <div class="audio-title-row">
-                    <span class="track-title">Give Me A Break</span>
-                    <span class="audio-spotify-dot" title="Also on Spotify">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
-                      </svg>
-                    </span>
-                  </div>
-                  <div class="audio-meta">Single · 2024</div>
-                  <div class="audio-bar">
-                    <audio preload="none">
-                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/give-me-a-break-inlet.mp3" type="audio/mpeg">
-                    </audio>
-                  </div>
-                </div>
-              </div>
-
-              <!-- You're My Girl -->
-              <div class="audio-track">
-                <button class="audio-play" type="button" aria-label="Play You're My Girl">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8 5v14l11-7z"></path>
-                  </svg>
-                </button>
-                <div class="audio-body">
-                  <div class="audio-title-row">
-                    <span class="track-title">You're My Girl</span>
-                    <span class="audio-spotify-dot" title="Also on Spotify">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
-                      </svg>
-                    </span>
-                  </div>
-                  <div class="audio-meta">Single · 2024</div>
-                  <div class="audio-bar">
-                    <audio preload="none">
-                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/youre-my-girl.mp3" type="audio/mpeg">
-                    </audio>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Something's Going Down Tonight -->
-              <div class="audio-track">
-                <button class="audio-play" type="button" aria-label="Play Something's Going Down Tonight">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M8 5v14l11-7z"></path>
-                  </svg>
-                </button>
-                <div class="audio-body">
-                  <div class="audio-title-row">
-                    <span class="track-title">Something's Going Down Tonight</span>
-                    <span class="audio-spotify-dot" title="Also on Spotify">
-                      <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
-                      </svg>
-                    </span>
-                  </div>
-                  <div class="audio-meta">Single · 2023</div>
-                  <div class="audio-bar">
-                    <audio preload="none">
-                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/somethings-going-down-tonight-inlet.mp3" type="audio/mpeg">
-                    </audio>
-                  </div>
-                </div>
-              </div>
-
             </div>
 
-            <!-- SPOTIFY EMBED -->
-            <h3 style="font-size:15px;margin:16px 0 6px;">Listen on Spotify</h3>
+            <h3 style="font-size:15px;margin:18px 0 6px;">Full Catalog on Spotify</h3>
             <div class="media-embeds">
               <iframe src="https://open.spotify.com/embed/artist/17vaQuBeVZ0FozcBRqF9R3"
                       allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
@@ -997,7 +656,6 @@
 
         <!-- Curated grid -->
         <div class="grid">
-          <!-- Curated “Best 15” -->
           <a href="assets/inlet-beach.png"><img src="assets/inlet-beach.png" alt="Band on the beach at sunset"></a>
           <a href="assets/inlet-beach-walking.png"><img src="assets/inlet-beach-walking.png" alt="Band walking along the shoreline"></a>
           <a href="assets/inlet-beach-football.png"><img src="assets/inlet-beach-football.png" alt="Beach football photo"></a>
@@ -1253,47 +911,101 @@
       }
     });
   }, { threshold: 0.15 });
-
   revealEls.forEach(el => observer.observe(el));
 
-  // Audio players: one-at-a-time play + visual state
+  // Audio player logic
   (function(){
-    const tracks = Array.from(document.querySelectorAll('.audio-track'));
-    const audios = tracks.map(t => t.querySelector('audio'));
+    const tracks = document.querySelectorAll('.track');
+    const progress = document.getElementById('trackProgress');
+    const currentTimeEl = document.getElementById('currentTime');
+    const durationEl = document.getElementById('duration');
 
-    function pauseAll(except){
-      audios.forEach(a => {
-        if (!a) return;
-        if (a !== except){
-          a.pause();
-          const parent = a.closest('.audio-track');
-          if (parent) parent.classList.remove('playing');
-        }
-      });
+    const audio = new Audio();
+    let currentTrack = null;
+    let isSeeking = false;
+
+    function formatTime(sec){
+      if (isNaN(sec)) return '0:00';
+      const m = Math.floor(sec / 60);
+      const s = Math.floor(sec % 60);
+      return m + ':' + String(s).padStart(2,'0');
+    }
+
+    function setActiveTrack(trackEl){
+      tracks.forEach(t => t.classList.remove('playing'));
+      if (!trackEl){ currentTrack = null; return; }
+      trackEl.classList.add('playing');
+      currentTrack = trackEl;
+    }
+
+    function playTrack(trackEl){
+      const src = trackEl.getAttribute('data-src');
+      if (!src) return;
+
+      // If same track and currently playing, pause
+      if (currentTrack === trackEl && !audio.paused){
+        audio.pause();
+        trackEl.classList.remove('playing');
+        return;
+      }
+
+      // If new track or was paused, load and play
+      if (audio.src !== src){
+        audio.src = src;
+        audio.currentTime = 0;
+      }
+      audio.play().catch(()=>{});
+      setActiveTrack(trackEl);
     }
 
     tracks.forEach(track => {
-      const audio = track.querySelector('audio');
-      const btn = track.querySelector('.audio-play');
-      if (!audio || !btn) return;
-
-      btn.addEventListener('click', () => {
-        if (audio.paused){
-          pauseAll(audio);
-          audio.play();
-          track.classList.add('playing');
-        } else {
-          audio.pause();
-          track.classList.remove('playing');
+      const btn = track.querySelector('.track-play');
+      track.addEventListener('click', e => {
+        // avoid double-trigger from button
+        if (e.target === btn){
+          e.stopPropagation();
         }
+        playTrack(track);
       });
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        playTrack(track);
+      });
+    });
 
-      audio.addEventListener('ended', () => {
-        track.classList.remove('playing');
-      });
-      audio.addEventListener('pause', () => {
-        track.classList.remove('playing');
-      });
+    audio.addEventListener('timeupdate', () => {
+      if (!isSeeking){
+        const pct = (audio.currentTime / (audio.duration || 1)) * 100;
+        progress.value = pct;
+      }
+      currentTimeEl.textContent = formatTime(audio.currentTime);
+      durationEl.textContent = formatTime(audio.duration);
+      if (currentTrack){
+        const timeLabel = currentTrack.querySelector('[data-time]');
+        if (timeLabel){
+          timeLabel.textContent = formatTime(audio.currentTime);
+        }
+      }
+    });
+
+    audio.addEventListener('ended', () => {
+      if (!currentTrack) return;
+      const arr = Array.from(tracks);
+      let idx = arr.indexOf(currentTrack);
+      idx = (idx + 1) % arr.length;
+      playTrack(arr[idx]);
+    });
+
+    progress.addEventListener('input', () => {
+      isSeeking = true;
+      const pct = progress.value;
+      const t = (pct / 100) * (audio.duration || 0);
+      currentTimeEl.textContent = formatTime(t);
+    });
+    progress.addEventListener('change', () => {
+      const pct = progress.value;
+      audio.currentTime = (pct / 100) * (audio.duration || 0);
+      isSeeking = false;
     });
   })();
 </script>
