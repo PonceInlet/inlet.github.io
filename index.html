@@ -156,26 +156,13 @@
       padding:0 18px;
     }
 
-    /* Hero (aligned like two-col) */
+    /* Hero */
     .hero{
       padding:70px 0 40px;
-    }
-    .hero-card-outer{
-      background:var(--bg-elevated);
-      border-radius:var(--radius-lg);
-      padding:24px 22px;
-      box-shadow:var(--shadow-soft);
-    }
-    .hero-grid{
-      display:grid;
-      grid-template-columns:1.4fr 1fr;
-      gap:24px;
+      display:flex;
       align-items:center;
-    }
-    @media(max-width:900px){
-      .hero-grid{
-        grid-template-columns:1fr;
-      }
+      justify-content:space-between;
+      gap:36px;
     }
     .hero-main{
       flex:1.4;
@@ -244,19 +231,17 @@
     .hero-side{
       flex:1;
       display:flex;
-      justify-content:flex-start;
+      justify-content:flex-end;
     }
     .hero-card{
       background:var(--bg-elevated);
       border-radius:var(--radius-lg);
-      padding:14px;
+      padding:18px;
       box-shadow:var(--shadow-soft);
       display:flex;
       flex-direction:column;
       gap:10px;
-      width:100%;
-      max-width:340px;
-      margin-left:auto;
+      max-width:320px;
     }
     .hero-photo{
       width:100%;
@@ -272,15 +257,22 @@
 
     @media(max-width:880px){
       .hero{
-        padding-top:40px;
+        flex-direction:column-reverse;
+        align-items:flex-start;
+      }
+      .hero-side{
+        width:100%;
+        justify-content:center;
       }
       .hero-card{
         max-width:100%;
-        margin-left:0;
       }
     }
 
     @media(max-width:600px){
+      .hero{
+        padding-top:40px;
+      }
       .hero h1{
         font-size:34px;
       }
@@ -328,16 +320,6 @@
       }
     }
 
-    .plain-list{
-      list-style:none;
-      padding:0;
-      margin:0;
-      font-size:14px;
-    }
-    .plain-list li+li{
-      margin-top:6px;
-    }
-
     .list-item{
       padding:8px 10px;
       border-radius:8px;
@@ -356,94 +338,85 @@
       box-shadow:0 10px 26px rgba(15,23,42,0.18);
     }
 
-    /* Custom audio track list */
-    .tracks{
+    /* Custom audio players */
+    .audio-list{
+      margin-top:8px;
       display:flex;
       flex-direction:column;
-      gap:6px;
-      margin-bottom:10px;
+      gap:10px;
     }
-    .track{
-      display:grid;
-      grid-template-columns:auto 1fr auto;
+    .audio-track{
+      display:flex;
       align-items:center;
       gap:10px;
-      padding:8px 10px;
-      border-radius:10px;
-      cursor:pointer;
-      transition:background .16s ease, transform .1s ease;
+      padding:9px 11px;
+      border-radius:14px;
+      background:linear-gradient(135deg,rgba(14,165,164,0.08),rgba(255,122,89,0.05));
+      box-shadow:0 10px 24px rgba(15,23,42,0.12);
     }
-    .track:hover{
-      background:rgba(15,23,42,0.03);
-      transform:translateY(-1px);
+    .audio-track.lead{
+      border:1px solid rgba(14,165,164,0.7);
     }
-    .track.playing{
-      background:rgba(14,165,164,0.08);
-    }
-    .track-play{
-      width:30px;
-      height:30px;
+    .audio-play{
+      flex:0 0 36px;
+      height:36px;
       border-radius:999px;
-      border:none;
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      background:#020617;
-      color:#e5e7eb;
-      cursor:pointer;
-      font-size:14px;
-      padding:0;
-    }
-    .track.playing .track-play{
       background:var(--accent);
-      color:#020617;
+      color:#f9fafb;
+      cursor:pointer;
+      box-shadow:0 10px 22px rgba(14,165,164,0.6);
+      transition:transform .12s ease, box-shadow .12s ease, background .12s ease, opacity .12s ease;
     }
-    .track-text{
+    .audio-play svg{
+      width:16px;
+      height:16px;
+      fill:currentColor;
+      display:block;
+    }
+    .audio-track.playing .audio-play{
+      background:var(--accent2);
+      transform:translateY(-1px) scale(1.03);
+      box-shadow:0 12px 26px rgba(255,122,89,0.6);
+      opacity:0.98;
+    }
+    .audio-body{
+      flex:1;
       display:flex;
       flex-direction:column;
-      gap:2px;
+      gap:4px;
     }
-    .track-title{
+    .audio-title-row{
+      display:flex;
+      align-items:center;
+      gap:6px;
       font-size:14px;
       font-weight:600;
     }
-    .track-meta{
+    .audio-meta{
       font-size:12px;
       color:var(--muted);
     }
-    .track-time{
-      font-size:12px;
-      color:var(--muted);
-      min-width:40px;
-      text-align:right;
-    }
-    .track-progress-wrap{
-      margin-top:6px;
-    }
-    #trackProgress{
+    .audio-bar audio{
       width:100%;
-      -webkit-appearance:none;
-      height:4px;
+    }
+    .audio-spotify-dot{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:16px;
+      height:16px;
       border-radius:999px;
-      background:#e5e7eb;
-      outline:none;
-      cursor:pointer;
+      background:#1DB954;
+      color:#020617;
     }
-    #trackProgress::-webkit-slider-thumb{
-      -webkit-appearance:none;
-      width:12px;
-      height:12px;
-      border-radius:50%;
-      background:var(--accent);
-      box-shadow:0 0 0 4px rgba(14,165,164,0.2);
-      border:none;
-    }
-    #trackProgress::-moz-range-thumb{
-      width:12px;
-      height:12px;
-      border-radius:50%;
-      background:var(--accent);
-      border:none;
+    .audio-spotify-dot svg{
+      width:10px;
+      height:10px;
+      fill:currentColor;
+      display:block;
     }
 
     /* Quick links icon row */
@@ -603,4 +576,727 @@
       cursor:pointer;
     }
     .lightbox-close{
-      top
+      top:16px;
+      right:16px;
+      transform:none;
+      font-size:22px;
+    }
+    .lightbox-prev{left:-44px;}
+    .lightbox-next{right:-44px;}
+    @media(max-width:700px){
+      .lightbox-prev{left:8px;}
+      .lightbox-next{right:8px;}
+    }
+
+    /* Press & tech lists */
+    .plain-list{
+      list-style:none;
+      padding:0;
+      margin:0;
+      font-size:14px;
+    }
+    .plain-list li+li{
+      margin-top:6px;
+    }
+
+    /* Contact */
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1.1fr 1fr;
+      gap:20px;
+    }
+    @media(max-width:780px){
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
+    footer{
+      text-align:center;
+      padding:30px 0 40px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    /* Scroll reveal */
+    .reveal{
+      opacity:0;
+      transform:translateY(18px);
+      transition:opacity .5s ease,transform .5s ease;
+    }
+    .reveal.visible{
+      opacity:1;
+      transform:translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+<header class="site-header" id="siteHeader">
+  <div class="site-header-inner">
+    <div class="brand">
+      <div class="brand-mark"></div>
+      <span>INLET</span>
+    </div>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span>☰</span>
+    </button>
+    <div class="nav-links" id="navLinks">
+      <nav>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#music">Music</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#press">Shows</a></li>
+          <li><a href="#tech">Tech</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+  <main class="container">
+
+    <!-- HERO -->
+    <section class="hero reveal">
+      <div class="hero-main">
+        <div class="hero-kicker">Indie alt-rock / surf · Port Orange, FL</div>
+        <h1>Hook-heavy coastal indie with three shimmering guitars.</h1>
+        <p class="hero-sub">
+          INLET is five high-school friends turning surf days and late nights into sun-soaked,
+          melodic indie rock — reverb-washed guitars, tight rhythms, and big sing-along choruses.
+        </p>
+        <p class="hero-meta">
+          For promoters, venues & press: streaming links, photos, live history and technical info in one place.
+        </p>
+        <div class="btn-row">
+          <a class="btn" href="https://open.spotify.com/artist/17vaQuBeVZ0FozcBRqF9R3" target="_blank">Listen on Spotify</a>
+          <a class="btn btn-ghost" href="#contact">Booking & Contact</a>
+        </div>
+      </div>
+
+      <aside class="hero-side">
+        <div class="hero-card">
+          <img class="hero-photo" src="assets/inlet-beach-air.png" alt="INLET band on the beach">
+          <div class="hero-caption">
+            INLET — Port Orange, FL.<br>
+            For fans of The Strokes, Vampire Weekend, The Growlers, La Luz.
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section reveal">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">About</div>
+          <h2 class="section-title">Band Story</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="two-col">
+          <div>
+            <p>
+              Inlet formed in Port Orange, Florida when five high-school friends turned surf days and skate parks
+              into a band. They write sun-soaked, hook-driven songs about good times, love, and life — blending
+              shimmering reverb and chorus-soaked guitars with tight rhythms, vocal interplay, and contemporary indie textures.
+            </p>
+            <p style="margin-top:10px;">
+              With an unmistakable three-guitar attack, INLET balances nostalgic surf warmth and modern alt-rock energy,
+              delivering sets that feel equally at home in packed clubs, DIY rooms, and coastal festivals.
+            </p>
+          </div>
+
+          <div>
+            <h3 style="font-size:15px;margin-bottom:6px;">Band Members</h3>
+            <ul class="plain-list">
+              <li>Matthew Gray — Guitar / Vocals</li>
+              <li>John Gray — Guitar / Vocals</li>
+              <li>Jake Tweed — Guitar</li>
+              <li>Luke Hampton — Bass</li>
+              <li>Aaron McKeown — Drums</li>
+            </ul>
+
+            <h3 style="font-size:15px;margin:16px 0 6px;">Influences</h3>
+            <p style="font-size:14px;color:var(--muted);">
+              The Strokes, Vampire Weekend, The Beatles, The Growlers, La Luz, The Smiths, Pixies,
+              The Flaming Lips, Best Coast — plus jazz legends like Miles Davis & John Coltrane and
+              country greats like Hank Williams.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MUSIC -->
+    <section id="music" class="section reveal">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Music</div>
+          <h2 class="section-title">Selected Singles & Streaming</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="two-col">
+          <div>
+            <h3 style="font-size:15px;margin-bottom:8px;">Singles</h3>
+            <ul class="plain-list">
+              <li class="list-item"><strong>Fine</strong> — Oct 2025 (underground hit)</li>
+              <li class="list-item">You're Not Owed That — Oct 2025</li>
+              <li class="list-item">You Won't See Me — 2025</li>
+              <li class="list-item">Give Me A Break — 2024</li>
+              <li class="list-item">You're My Girl — 2024</li>
+              <li class="list-item">Something's Going Down Tonight — 2023</li>
+            </ul>
+
+            <!-- INLINE AUDIO PLAYERS -->
+            <h3 style="font-size:15px;margin:16px 0 6px;">Listen to Singles</h3>
+            <div class="audio-list">
+
+              <!-- Fine (Lead) -->
+              <div class="audio-track lead">
+                <button class="audio-play" type="button" aria-label="Play Fine">
+                  <!-- Play icon (triangle) -->
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </button>
+                <div class="audio-body">
+                  <div class="audio-title-row">
+                    <span class="track-title">Fine</span>
+                    <span class="audio-spotify-dot" title="Also on Spotify">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="audio-meta">Lead single · 2025</div>
+                  <div class="audio-bar">
+                    <audio preload="none">
+                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/fine-inlet.mp3" type="audio/mpeg">
+                    </audio>
+                  </div>
+                </div>
+              </div>
+
+              <!-- You're Not Owed That -->
+              <div class="audio-track">
+                <button class="audio-play" type="button" aria-label="Play You're Not Owed That">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </button>
+                <div class="audio-body">
+                  <div class="audio-title-row">
+                    <span class="track-title">You're Not Owed That</span>
+                    <span class="audio-spotify-dot" title="Also on Spotify">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="audio-meta">Single · 2025</div>
+                  <div class="audio-bar">
+                    <audio preload="none">
+                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/youre-not-owed-that-inlet.mp3" type="audio/mpeg">
+                    </audio>
+                  </div>
+                </div>
+              </div>
+
+              <!-- You Won't See Me -->
+              <div class="audio-track">
+                <button class="audio-play" type="button" aria-label="Play You Won't See Me">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </button>
+                <div class="audio-body">
+                  <div class="audio-title-row">
+                    <span class="track-title">You Won't See Me</span>
+                    <span class="audio-spotify-dot" title="Also on Spotify">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="audio-meta">Single · 2025</div>
+                  <div class="audio-bar">
+                    <audio preload="none">
+                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/you-wont-see-me-inlet.mp3" type="audio/mpeg">
+                    </audio>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Give Me A Break -->
+              <div class="audio-track">
+                <button class="audio-play" type="button" aria-label="Play Give Me A Break">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </button>
+                <div class="audio-body">
+                  <div class="audio-title-row">
+                    <span class="track-title">Give Me A Break</span>
+                    <span class="audio-spotify-dot" title="Also on Spotify">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="audio-meta">Single · 2024</div>
+                  <div class="audio-bar">
+                    <audio preload="none">
+                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/give-me-a-break-inlet.mp3" type="audio/mpeg">
+                    </audio>
+                  </div>
+                </div>
+              </div>
+
+              <!-- You're My Girl -->
+              <div class="audio-track">
+                <button class="audio-play" type="button" aria-label="Play You're My Girl">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </button>
+                <div class="audio-body">
+                  <div class="audio-title-row">
+                    <span class="track-title">You're My Girl</span>
+                    <span class="audio-spotify-dot" title="Also on Spotify">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="audio-meta">Single · 2024</div>
+                  <div class="audio-bar">
+                    <audio preload="none">
+                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/youre-my-girl.mp3" type="audio/mpeg">
+                    </audio>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Something's Going Down Tonight -->
+              <div class="audio-track">
+                <button class="audio-play" type="button" aria-label="Play Something's Going Down Tonight">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5v14l11-7z"></path>
+                  </svg>
+                </button>
+                <div class="audio-body">
+                  <div class="audio-title-row">
+                    <span class="track-title">Something's Going Down Tonight</span>
+                    <span class="audio-spotify-dot" title="Also on Spotify">
+                      <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
+                      </svg>
+                    </span>
+                  </div>
+                  <div class="audio-meta">Single · 2023</div>
+                  <div class="audio-bar">
+                    <audio preload="none">
+                      <source src="https://cdn.jsdelivr.net/gh/PonceInlet/inlet.github.io@main/assets/somethings-going-down-tonight-inlet.mp3" type="audio/mpeg">
+                    </audio>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- SPOTIFY EMBED -->
+            <h3 style="font-size:15px;margin:16px 0 6px;">Listen on Spotify</h3>
+            <div class="media-embeds">
+              <iframe src="https://open.spotify.com/embed/artist/17vaQuBeVZ0FozcBRqF9R3"
+                      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+            </div>
+          </div>
+
+          <aside class="quick-links">
+            <h3 style="font-size:15px;margin-bottom:6px;">Quick Links</h3>
+            <div class="quick-links-icons">
+              <!-- Spotify -->
+              <a class="quick-icon spotify"
+                 href="https://open.spotify.com/artist/17vaQuBeVZ0FozcBRqF9R3"
+                 target="_blank" aria-label="Spotify">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3.4 13.9a.8.8 0 0 1-1.1.3 8.2 8.2 0 0 0-4.7-.9 12 12 0 0 0-2.6.5.8.8 0 0 1-.5-1.5 12 12 0 0 1 2.9-.6 9.7 9.7 0 0 1 5.5 1.1c.4.2.6.7.3 1.1zm1.4-3.1a1 1 0 0 1-1.3.4 10 10 0 0 0-5.6-1.1 14.4 14.4 0 0 0-3.2.5 1 1 0 1 1-.6-1.9 16 16 0 0 1 3.7-.6 12 12 0 0 1 6.7 1.3 1 1 0 0 1 .3 1.4zm.2-3.3a1.2 1.2 0 0 1-1.6.4 12.5 12.5 0 0 0-6.1-1 18 18 0 0 0-3.8.6 1.2 1.2 0 1 1-.7-2.3 20 20 0 0 1 4.3-.7 14.8 14.8 0 0 1 7.2 1.2 1.2 1.2 0 0 1 .7 1.8z"/>
+                </svg>
+              </a>
+
+              <!-- Instagram -->
+              <a class="quick-icon instagram"
+                 href="https://www.instagram.com/inlettheband"
+                 target="_blank" aria-label="Instagram">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4zm0 2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H7zm5 3.2A3.8 3.8 0 1 1 8.2 12 3.8 3.8 0 0 1 12 8.2zm0 2a1.8 1.8 0 1 0 1.8 1.8A1.8 1.8 0 0 0 12 10.2zm4.1-2.9a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/>
+                </svg>
+              </a>
+
+              <!-- YouTube -->
+              <a class="quick-icon youtube"
+                 href="https://www.youtube.com/channel/UCIq0cUss-PxETZh6uOgyZlQ"
+                 target="_blank" aria-label="YouTube">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M21 8.2s-.2-1.4-.8-2a2.6 2.6 0 0 0-1.8-1.1C16.4 4.8 12 4.8 12 4.8h0s-4.4 0-6.4.3A2.6 2.6 0 0 0 3.8 6.2c-.6.6-.8 2-.8 2S3 9.8 3 11.4v1.1c0 1.6.2 3.3.2 3.3s.2 1.4.8 2a2.7 2.7 0 0 0 1.8 1.1c1.3.1 6.2.3 6.2.3s4.4 0 6.4-.3a2.6 2.6 0 0 0 1.8-1.1c.6-.6.8-2 .8-2s.2-1.7.2-3.3v-1.1C21.2 9.8 21 8.2 21 8.2zm-9 6.3V9.5l3.7 2.5z"/>
+                </svg>
+              </a>
+
+              <!-- Apple Music -->
+              <a class="quick-icon apple"
+                 href="https://music.apple.com/us/album/youre-not-owed-that-fine-single/1842620752"
+                 target="_blank" aria-label="Apple Music">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M16.6 3.2 10.5 4.5a1.1 1.1 0 0 0-.9 1.1v9.1a2.4 2.4 0 0 1-1.6 2.3c-1.1.4-2.1 0-2.7-.7a2.4 2.4 0 0 1-.4-2.3 2.4 2.4 0 0 1 1.8-1.6 3.1 3.1 0 0 1 1.5.1V8.2l7.1-1.6v6.9a2.4 2.4 0 0 1-1.6 2.3c-1.1.4-2.1 0-2.7-.7a2.4 2.4 0 0 1-.4-2.3 2.4 2.4 0 0 1 1.8-1.6 3.1 3.1 0 0 1 1.5.1V4.3a1.1 1.1 0 0 0-1.3-1.1z"/>
+                </svg>
+              </a>
+
+              <!-- Deezer -->
+              <a class="quick-icon deezer"
+                 href="https://link.deezer.com/s/31G2hk3n6Er7YtIWcPccj"
+                 target="_blank" aria-label="Deezer">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <rect x="3" y="13" width="3" height="5" rx="1"></rect>
+                  <rect x="8" y="11" width="3" height="7" rx="1"></rect>
+                  <rect x="13" y="9" width="3" height="9" rx="1"></rect>
+                  <rect x="18" y="7" width="3" height="11" rx="1"></rect>
+                </svg>
+              </a>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section reveal">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Photos</div>
+          <h2 class="section-title">Gallery</h2>
+        </div>
+        <div style="font-size:12px;color:var(--muted);">
+          Click any image to view full-size. Use ← / → to navigate.
+        </div>
+      </div>
+
+      <div class="card">
+        <!-- Hero image -->
+        <div class="gallery-hero">
+          <a href="assets/inlet-bw-home.png">
+            <img src="assets/inlet-bw-home.png" alt="Black & white band photo at home">
+          </a>
+        </div>
+
+        <!-- Curated grid -->
+        <div class="grid">
+          <!-- Curated “Best 15” -->
+          <a href="assets/inlet-beach.png"><img src="assets/inlet-beach.png" alt="Band on the beach at sunset"></a>
+          <a href="assets/inlet-beach-walking.png"><img src="assets/inlet-beach-walking.png" alt="Band walking along the shoreline"></a>
+          <a href="assets/inlet-beach-football.png"><img src="assets/inlet-beach-football.png" alt="Beach football photo"></a>
+          <a href="assets/inlet-beach-diag-serious.png"><img src="assets/inlet-beach-diag-serious.png" alt="Diagonal serious beach pose"></a>
+
+          <a href="assets/inlet-fisheye.png"><img src="assets/inlet-fisheye.png" alt="Live fisheye stage shot"></a>
+          <a href="assets/inlet-live-wills-color.png"><img src="assets/inlet-live-wills-color.png" alt="Live at Will's Pub"></a>
+          <a href="assets/inlet-luke-john-matt-deland.png"><img src="assets/inlet-luke-john-matt-deland.png" alt="Luke, John and Matt live in Deland"></a>
+          <a href="assets/inlet-jake-deland.png"><img src="assets/inlet-jake-deland.png" alt="Jake live in Deland"></a>
+
+          <a href="assets/inlet-couch.png"><img src="assets/inlet-couch.png" alt="Band on couch portrait"></a>
+          <a href="assets/inlet-john-bw.png"><img src="assets/inlet-john-bw.png" alt="John black and white portrait"></a>
+          <a href="assets/inlet-matt-bw.png"><img src="assets/inlet-matt-bw.png" alt="Matt black and white portrait"></a>
+
+          <a href="assets/inlet-album-cover-palm-board.png"><img src="assets/inlet-album-cover-palm-board.png" alt="Palm board single artwork"></a>
+          <a href="assets/inlet-fine-cover.png"><img src="assets/inlet-fine-cover.png" alt="Fine single cover art"></a>
+          <a href="assets/inlet-logo.jpg"><img src="assets/inlet-logo.jpg" alt="INLET logo"></a>
+
+          <a href="assets/inlet-drums-blur.png"><img src="assets/inlet-drums-blur.png" alt="Drums motion blur live shot"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRESS / GIGS -->
+    <section id="press" class="section reveal">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Live</div>
+          <h2 class="section-title">Press & Recent Shows</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="font-size:15px;margin-bottom:8px;">Highlights</h3>
+        <ul class="plain-list">
+          <li class="list-item">Underground hit single: <em>Fine</em> — Oct 2025</li>
+          <li class="list-item">Consistent single releases (2023–2025) with growing streaming presence</li>
+          <li class="list-item">Strong local following across Volusia County / Daytona Beach / Port Orange scene</li>
+        </ul>
+
+        <h3 style="font-size:15px;margin:16px 0 8px;">Recent Shows</h3>
+        <ul class="plain-list">
+          <li class="list-item">Punk Rock Pizza (Daytona Beach, FL) — March 2, 2025</li>
+          <li class="list-item">Sold-out show at Cinematique Theater (Downtown Daytona Beach, FL) — March 8, 2025</li>
+          <li class="list-item">Uncle Lou's (Orlando, FL) — April 6, 2025</li>
+          <li class="list-item">Delandapalooza Music Festival — April 12, 2025</li>
+          <li class="list-item">Will's Pub (Mills 50 District, Orlando, FL) — May 9, 2025</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- TECH RIDER -->
+    <section id="tech" class="section reveal">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Technical</div>
+          <h2 class="section-title">Live Setup & Tech Rider</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="two-col">
+          <div>
+            <h3 style="font-size:15px;margin-bottom:8px;">Show Format</h3>
+            <p class="list-item">
+              <strong>Typical set:</strong> 30–75 minutes. Lineup: 5 members — 3 electric guitars, bass, drums.<br>
+              Flexible set lengths for support, co-headline, or festival slots.
+            </p>
+
+            <h3 style="font-size:15px;margin:14px 0 8px;">Backline (preferred)</h3>
+            <ul class="plain-list">
+              <li class="list-item">4-piece drum kit (kick, snare, rack tom, floor tom) + hi-hat, ride, crash</li>
+              <li class="list-item">3× small/medium guitar amps (30–100W), Fender-style preferred</li>
+              <li class="list-item">1× bass rig (250W+ head/combo) or DI to house</li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 style="font-size:15px;margin-bottom:8px;">Suggested Input List</h3>
+            <ul class="plain-list">
+              <li>1 — Kick</li>
+              <li>2 — Snare</li>
+              <li>3 — Hi-Hat</li>
+              <li>4 — Overhead L</li>
+              <li>5 — Overhead R</li>
+              <li>6 — Bass DI</li>
+              <li>7 — Guitar 1 (Vox) L</li>
+              <li>8 — Guitar 2 (Vox) R</li>
+              <li>9 — Guitar 3</li>
+              <li>10 — Backing Vocal 1</li>
+              <li>11 — Backing Vocal 2</li>
+              <li>12 — FX / Spare</li>
+            </ul>
+            <p style="font-size:13px;color:var(--muted);margin-top:8px;">
+              Detailed stage plot and patch details available on request.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section reveal">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Contact</div>
+          <h2 class="section-title">Booking & Press</h2>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="contact-grid">
+          <div>
+            <h3 style="font-size:15px;margin-bottom:8px;">Primary Contacts</h3>
+            <p class="list-item">
+              <strong>Booking / Press:</strong> booking@inletband.example<br>
+              <strong>Management:</strong> info@inletband.example<br>
+              <strong>Location:</strong> Port Orange / Daytona Beach, FL
+            </p>
+            <p style="font-size:13px;color:var(--muted);margin-top:6px;">
+              Please include venue name, date range, set length, and any backline / budget details with your inquiry.
+            </p>
+          </div>
+
+          <div>
+            <h3 style="font-size:15px;margin-bottom:8px;">Social & Streaming</h3>
+            <p style="font-size:14px;">
+              <a href="https://open.spotify.com/artist/17vaQuBeVZ0FozcBRqF9R3" target="_blank">Spotify</a> ·
+              <a href="https://www.instagram.com/inlettheband" target="_blank">Instagram</a> ·
+              <a href="https://www.youtube.com/channel/UCIq0cUss-PxETZh6uOgyZlQ" target="_blank">YouTube</a> ·
+              <a href="https://music.apple.com/us/album/youre-not-owed-that-fine-single/1842620752" target="_blank">Apple Music</a> ·
+              <a href="https://link.deezer.com/s/31G2hk3n6Er7YtIWcPccj" target="_blank">Deezer</a>
+            </p>
+            <p style="font-size:13px;color:var(--muted);margin-top:8px;">
+              High-res photos, logos, and additional promo materials are available upon request.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © INLET — All rights reserved · EPK
+  </footer>
+</div>
+
+<!-- LIGHTBOX + NAV + SCROLL REVEAL + AUDIO SCRIPT -->
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+  });
+
+  // Close nav on link click (mobile)
+  document.querySelectorAll('#navLinks a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+    });
+  });
+
+  // Header shadow on scroll
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      header.classList.add('scrolled');
+    } else {
+      header.classList.remove('scrolled');
+    }
+  });
+
+  // Lightbox
+  (function(){
+    const links = Array.from(document.querySelectorAll('.grid a, .gallery-hero a'));
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox-overlay';
+    lightbox.innerHTML = `
+      <div class="lightbox-content">
+        <button class="lightbox-close" aria-label="Close">&times;</button>
+        <button class="lightbox-prev" aria-label="Previous">&#10094;</button>
+        <img class="lightbox-image" src="" alt="">
+        <button class="lightbox-next" aria-label="Next">&#10095;</button>
+        <div class="lightbox-caption"></div>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+
+    const imgEl = lightbox.querySelector('.lightbox-image');
+    const captionEl = lightbox.querySelector('.lightbox-caption');
+    const btnClose = lightbox.querySelector('.lightbox-close');
+    const btnPrev = lightbox.querySelector('.lightbox-prev');
+    const btnNext = lightbox.querySelector('.lightbox-next');
+    let index = 0;
+
+    function openAt(i){
+      const link = links[i];
+      if (!link) return;
+      const img = link.querySelector('img');
+      imgEl.src = link.getAttribute('href');
+      imgEl.alt = img ? img.alt : '';
+      captionEl.textContent = img ? img.alt : '';
+      index = i;
+      lightbox.classList.add('open');
+    }
+
+    function close(){
+      lightbox.classList.remove('open');
+    }
+
+    function prev(){
+      index = (index - 1 + links.length) % links.length;
+      openAt(index);
+    }
+
+    function next(){
+      index = (index + 1) % links.length;
+      openAt(index);
+    }
+
+    links.forEach((link, i) => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        openAt(i);
+      });
+    });
+
+    btnClose.addEventListener('click', close);
+    btnPrev.addEventListener('click', prev);
+    btnNext.addEventListener('click', next);
+
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) close();
+    });
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+    });
+  })();
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  // Audio players: one-at-a-time play + visual state
+  (function(){
+    const tracks = Array.from(document.querySelectorAll('.audio-track'));
+    const audios = tracks.map(t => t.querySelector('audio'));
+
+    function pauseAll(except){
+      audios.forEach(a => {
+        if (!a) return;
+        if (a !== except){
+          a.pause();
+          const parent = a.closest('.audio-track');
+          if (parent) parent.classList.remove('playing');
+        }
+      });
+    }
+
+    tracks.forEach(track => {
+      const audio = track.querySelector('audio');
+      const btn = track.querySelector('.audio-play');
+      if (!audio || !btn) return;
+
+      btn.addEventListener('click', () => {
+        if (audio.paused){
+          pauseAll(audio);
+          audio.play();
+          track.classList.add('playing');
+        } else {
+          audio.pause();
+          track.classList.remove('playing');
+        }
+      });
+
+      audio.addEventListener('ended', () => {
+        track.classList.remove('playing');
+      });
+      audio.addEventListener('pause', () => {
+        track.classList.remove('playing');
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
