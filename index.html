@@ -60,7 +60,7 @@
             <div class="btn-row">
               <a class="btn" href="#contact">Book INLET for Your Venue / Festival</a>
               <a class="btn btn-ghost" href="https://open.spotify.com/artist/17vaQuBeVZ0FozcBRqF9R3" target="_blank">Listen on Spotify</a>
-              <a class="btn btn-ghost" href="assets/INLET-One-Sheet.pdf" target="_blank">Download One-Sheet (PDF)</a>
+              <a class="btn btn-ghost" href="assets/inlet_one_sheet.pdf" target="_blank">Download One-Sheet (PDF)</a>
             </div>
           </div>
 
@@ -394,7 +394,7 @@
               </li>
               <li class="list-item">
                 <strong>One-Sheet (PDF)</strong><br>
-                <a href="assets/INLET-One-Sheet.pdf">Download one-sheet</a>
+                <a href="assets/inlet_one_sheet.pdf">Download one-sheet</a>
               </li>
             </ul>
           </div>
@@ -489,7 +489,8 @@
 
       <div class="card">
         <p class="list-item">
-          <strong>Booking / Press / Management:</strong> inlettheband@gmail.com<br>
+          <strong>Booking / Press / Management:</strong>
+          <a href="mailto:inlettheband@gmail.com">inlettheband@gmail.com</a><br>
           <strong>Location:</strong> Port Orange / Daytona Beach, FL
         </p>
         <p style="font-size:13px;color:var(--muted);margin-top:6px;">
@@ -505,7 +506,7 @@
   </footer>
 </div>
 
-<!-- JS: nav, reveal, audio -->
+<!-- JS: nav, reveal, lightbox, audio -->
 <script>
   // Mobile nav toggle
   const navToggle = document.getElementById('navToggle');
@@ -535,6 +536,81 @@
     });
   }, { threshold: 0.15 });
   revealEls.forEach(el => observer.observe(el));
+
+  // Gallery Lightbox (dim + blur background, left/right nav)
+  (function(){
+    const links = Array.from(document.querySelectorAll('.grid a, .gallery-hero a'));
+    if (!links.length) return;
+
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox-overlay';
+    lightbox.innerHTML = `
+      <div class="lightbox-content">
+        <button class="lightbox-close" aria-label="Close">&times;</button>
+        <button class="lightbox-prev" aria-label="Previous">&#10094;</button>
+        <img class="lightbox-image" src="" alt="">
+        <button class="lightbox-next" aria-label="Next">&#10095;</button>
+        <div class="lightbox-caption"></div>
+      </div>
+    `;
+    document.body.appendChild(lightbox);
+
+    const imgEl = lightbox.querySelector('.lightbox-image');
+    const captionEl = lightbox.querySelector('.lightbox-caption');
+    const btnClose = lightbox.querySelector('.lightbox-close');
+    const btnPrev = lightbox.querySelector('.lightbox-prev');
+    const btnNext = lightbox.querySelector('.lightbox-next');
+    let index = 0;
+
+    function openAt(i){
+      const link = links[i];
+      if (!link) return;
+      const img = link.querySelector('img');
+      imgEl.src = link.getAttribute('href');
+      imgEl.alt = img ? img.alt : '';
+      captionEl.textContent = img ? img.alt : '';
+      index = i;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function close(){
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function prev(){
+      index = (index - 1 + links.length) % links.length;
+      openAt(index);
+    }
+
+    function next(){
+      index = (index + 1) % links.length;
+      openAt(index);
+    }
+
+    links.forEach((link, i) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        openAt(i);
+      });
+    });
+
+    btnClose.addEventListener('click', close);
+    btnPrev.addEventListener('click', prev);
+    btnNext.addEventListener('click', next);
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) close();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft') prev();
+    });
+  })();
 
   // Audio player with play/pause toggle
   (function(){
